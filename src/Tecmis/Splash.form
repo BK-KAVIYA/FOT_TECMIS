@@ -103,7 +103,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\acer\OneDrive\Desktop\JAVA\FotTecmis\photos\logo-removebg-preview.png"/>
+              <Image iconType="3" name="/PHOTOS/logo-removebg-preview.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="jLabel1"/>
           </Properties>

@@ -329,7 +329,7 @@ public class AdminUserManage extends javax.swing.JFrame {
 
         priCard1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, 220, 180));
 
-        jLabel36.setIcon(new javax.swing.ImageIcon("C:\\Users\\acer\\OneDrive\\Desktop\\JAVA\\FotTecmis\\photos\\image\\minimize.png")); // NOI18N
+        jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/minimize.png"))); // NOI18N
         jLabel36.setText("jLabel29");
         jLabel36.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -338,7 +338,7 @@ public class AdminUserManage extends javax.swing.JFrame {
         });
         priCard1.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 10, 20, -1));
 
-        jLabel44.setIcon(new javax.swing.ImageIcon("C:\\Users\\acer\\OneDrive\\Desktop\\JAVA\\FotTecmis\\photos\\image\\close.png")); // NOI18N
+        jLabel44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/close.png"))); // NOI18N
         jLabel44.setText("jLabel18");
         jLabel44.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -688,7 +688,7 @@ public class AdminUserManage extends javax.swing.JFrame {
         });
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 30, 20));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\acer\\OneDrive\\Desktop\\JAVA\\FotTecmis\\photos\\TECMIS ICON\\home.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/home.png"))); // NOI18N
         jLabel2.setText("jLabel2");
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -704,7 +704,7 @@ public class AdminUserManage extends javax.swing.JFrame {
                 rSMaterialButtonRectangle2ActionPerformed(evt);
             }
         });
-        jPanel3.add(rSMaterialButtonRectangle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, -1, -1));
+        jPanel3.add(rSMaterialButtonRectangle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, -1, 50));
 
         rSMaterialButtonRectangle3.setBackground(new java.awt.Color(153, 0, 0));
         rSMaterialButtonRectangle3.setText("INSTRUCTOR MANAGEMENT");
@@ -713,7 +713,7 @@ public class AdminUserManage extends javax.swing.JFrame {
                 rSMaterialButtonRectangle3ActionPerformed(evt);
             }
         });
-        jPanel3.add(rSMaterialButtonRectangle3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, -1, -1));
+        jPanel3.add(rSMaterialButtonRectangle3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, -1, 50));
 
         rSMaterialButtonRectangle4.setBackground(new java.awt.Color(153, 0, 0));
         rSMaterialButtonRectangle4.setText("STUDENT MANAGEMENT");
@@ -722,9 +722,9 @@ public class AdminUserManage extends javax.swing.JFrame {
                 rSMaterialButtonRectangle4ActionPerformed(evt);
             }
         });
-        jPanel3.add(rSMaterialButtonRectangle4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
+        jPanel3.add(rSMaterialButtonRectangle4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, 50));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\acer\\OneDrive\\Desktop\\JAVA\\FotTecmis\\photos\\icon2\\Images\\Update1.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/Update1.png"))); // NOI18N
         jLabel3.setText("jLabel3");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 120, 100));
 

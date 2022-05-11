@@ -547,7 +547,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel36">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="C:\Users\acer\OneDrive\Desktop\JAVA\FotTecmis\photos\image\minimize.png"/>
+                      <Image iconType="3" name="/PHOTOS/minimize.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="jLabel29"/>
                   </Properties>
@@ -563,7 +563,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel44">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="C:\Users\acer\OneDrive\Desktop\JAVA\FotTecmis\photos\image\close.png"/>
+                      <Image iconType="3" name="/PHOTOS/close.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="jLabel18"/>
                   </Properties>
@@ -1525,7 +1525,7 @@
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\acer\OneDrive\Desktop\JAVA\FotTecmis\photos\TECMIS ICON\home.png"/>
+              <Image iconType="3" name="/PHOTOS/home.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="jLabel2"/>
           </Properties>
@@ -1550,7 +1550,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="300" width="-1" height="-1"/>
+              <AbsoluteConstraints x="10" y="300" width="-1" height="50"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -1566,7 +1566,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="380" width="-1" height="-1"/>
+              <AbsoluteConstraints x="10" y="360" width="-1" height="50"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -1582,14 +1582,14 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="220" width="-1" height="-1"/>
+              <AbsoluteConstraints x="10" y="240" width="-1" height="50"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\acer\OneDrive\Desktop\JAVA\FotTecmis\photos\icon2\Images\Update1.png"/>
+              <Image iconType="3" name="/PHOTOS/Update1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="jLabel3"/>
           </Properties>

@@ -70,11 +70,11 @@ public class LoginPage extends javax.swing.JFrame {
         jLabel3.setText("University of Ruhuna");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, -1, 10));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\acer\\OneDrive\\Desktop\\JAVA\\FotTecmis\\photos\\loging_bg.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/loging_bg.png"))); // NOI18N
         jLabel4.setText("jLabel4");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 140, 590, 400));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\acer\\OneDrive\\Desktop\\JAVA\\FotTecmis\\photos\\logo.png")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/fot-logo.png"))); // NOI18N
         jLabel6.setText("jLabel6");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 80, 90));
 
@@ -85,7 +85,7 @@ public class LoginPage extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("x");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/close.png"))); // NOI18N
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
@@ -115,19 +115,19 @@ public class LoginPage extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\acer\\OneDrive\\Desktop\\JAVA\\FotTecmis\\photos\\icon\\login page icons\\icons8_Secure_50px.png")); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/icons8_Secure_50px.png"))); // NOI18N
         jLabel9.setText("Password :");
         jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 50, 50));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\acer\\OneDrive\\Desktop\\JAVA\\FotTecmis\\photos\\icon\\login page icons\\icons8_Account_50px.png")); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/icons8_Account_50px.png"))); // NOI18N
         jLabel10.setText("Username :");
         jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 50, 50));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setIcon(new javax.swing.ImageIcon("C:\\Users\\acer\\OneDrive\\Desktop\\JAVA\\FotTecmis\\photos\\icon\\login page icons\\icons8_Forgot_Password_50px_4.png")); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/icons8_Forgot_Password_50px_4.png"))); // NOI18N
         jLabel11.setText("Forgot Password?");
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 520, 180, 50));
 

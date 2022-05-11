@@ -131,7 +131,7 @@ public class Admindashboard extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 0, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\acer\\OneDrive\\Desktop\\JAVA\\FotTecmis\\photos\\fot-logo.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/fot-logo.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 72, 67));
 
@@ -145,7 +145,7 @@ public class Admindashboard extends javax.swing.JFrame {
         jLabel2.setText("Faculty of Technology");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 11, 237, -1));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\acer\\OneDrive\\Desktop\\JAVA\\FotTecmis\\photos\\man-with-beard-avatar-character-isolated-icon-free-vector-removebg-preview-removebg-preview.png")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/man-with-beard-avatar-character-isolated-icon-free-vector-removebg-preview-removebg-preview.png"))); // NOI18N
         jLabel6.setText("jLabel6");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 89, 115, 100));
 
@@ -180,13 +180,13 @@ public class Admindashboard extends javax.swing.JFrame {
                 rSMaterialButtonRectangle3ActionPerformed(evt);
             }
         });
-        jPanel1.add(rSMaterialButtonRectangle3, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 296, -1, 54));
+        jPanel1.add(rSMaterialButtonRectangle3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, 54));
 
         rSMaterialButtonRectangle4.setBackground(new java.awt.Color(153, 0, 0));
         rSMaterialButtonRectangle4.setText("Notices");
         jPanel1.add(rSMaterialButtonRectangle4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, 54));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\acer\\OneDrive\\Desktop\\JAVA\\FotTecmis\\photos\\TECMIS ICON\\exit.png")); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/exit.png"))); // NOI18N
         jLabel7.setText("jLabel7");
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -195,14 +195,14 @@ public class Admindashboard extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 539, 34, -1));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\acer\\OneDrive\\Desktop\\JAVA\\FotTecmis\\photos\\image\\profileSetting.png")); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/profileSetting.png"))); // NOI18N
         jLabel8.setText("jLabel8");
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel8MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 540, 39, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 190, 30, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 622));
 
@@ -216,7 +216,7 @@ public class Admindashboard extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 51, 0));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\acer\\OneDrive\\Desktop\\JAVA\\FotTecmis\\photos\\icon\\student.png")); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/student.png"))); // NOI18N
         jLabel10.setText("jLabel10");
 
         jLabel9.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
@@ -260,7 +260,7 @@ public class Admindashboard extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(255, 51, 0));
         jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));
 
-        jLabel11.setIcon(new javax.swing.ImageIcon("C:\\Users\\acer\\OneDrive\\Desktop\\JAVA\\FotTecmis\\photos\\icon\\lecturer.png")); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/lecturer.png"))); // NOI18N
         jLabel11.setText("jLabel10");
 
         jLabel12.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
@@ -306,7 +306,7 @@ public class Admindashboard extends javax.swing.JFrame {
         jPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\acer\\OneDrive\\Desktop\\JAVA\\FotTecmis\\photos\\icon\\techOfficer.png")); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/techOfficer.png"))); // NOI18N
         jLabel13.setText("jLabel10");
         jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 53, 98, 113));
 
@@ -320,7 +320,7 @@ public class Admindashboard extends javax.swing.JFrame {
         demoCount.setText("15");
         jPanel5.add(demoCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 60, 50));
 
-        jLabel18.setIcon(new javax.swing.ImageIcon("C:\\Users\\acer\\OneDrive\\Desktop\\JAVA\\FotTecmis\\photos\\image\\close.png")); // NOI18N
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/close.png"))); // NOI18N
         jLabel18.setText("jLabel18");
         jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -336,7 +336,7 @@ public class Admindashboard extends javax.swing.JFrame {
         jCalendar2.setTodayButtonVisible(true);
         jCalendar2.setWeekdayForeground(new java.awt.Color(0, 0, 204));
 
-        jLabel29.setIcon(new javax.swing.ImageIcon("C:\\Users\\acer\\OneDrive\\Desktop\\JAVA\\FotTecmis\\photos\\image\\minimize.png")); // NOI18N
+        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/minimize.png"))); // NOI18N
         jLabel29.setText("jLabel29");
         jLabel29.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -394,7 +394,7 @@ public class Admindashboard extends javax.swing.JFrame {
         CardPri2.setBackground(new java.awt.Color(255, 255, 255));
         CardPri2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel16.setIcon(new javax.swing.ImageIcon("C:\\Users\\acer\\OneDrive\\Desktop\\JAVA\\FotTecmis\\photos\\TECMIS ICON\\back_red.png")); // NOI18N
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/back_red.png"))); // NOI18N
         jLabel16.setText("jLabel16");
         jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -407,7 +407,7 @@ public class Admindashboard extends javax.swing.JFrame {
         jLabel15.setText("Admin Dashboard >Setting->");
         CardPri2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 255, 41));
 
-        jLabel17.setIcon(new javax.swing.ImageIcon("C:\\Users\\acer\\OneDrive\\Desktop\\JAVA\\FotTecmis\\photos\\image\\close.png")); // NOI18N
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/close.png"))); // NOI18N
         jLabel17.setText("jLabel17");
         jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -510,11 +510,11 @@ public class Admindashboard extends javax.swing.JFrame {
         });
         CardPri2.add(StUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(562, 500, 107, 40));
 
-        jLabel31.setIcon(new javax.swing.ImageIcon("C:\\Users\\acer\\OneDrive\\Desktop\\JAVA\\FotTecmis\\photos\\man-with-beard-avatar-character-isolated-icon-free-vector-removebg-preview-removebg-preview.png")); // NOI18N
+        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/man-with-beard-avatar-character-isolated-icon-free-vector-removebg-preview-removebg-preview.png"))); // NOI18N
         jLabel31.setText("jLabel31");
         CardPri2.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 80, 120, -1));
 
-        jLabel30.setIcon(new javax.swing.ImageIcon("C:\\Users\\acer\\OneDrive\\Desktop\\JAVA\\FotTecmis\\photos\\image\\minimize.png")); // NOI18N
+        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/minimize.png"))); // NOI18N
         jLabel30.setText("jLabel29");
         jLabel30.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -526,17 +526,20 @@ public class Admindashboard extends javax.swing.JFrame {
         CardjPannel.add(CardPri2, "CardPri2");
 
         CardPri3.setBackground(new java.awt.Color(255, 255, 255));
+        CardPri3.setForeground(new java.awt.Color(204, 0, 0));
         CardPri3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel34.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
         jLabel34.setText("Admin Dashboard >Course->");
         CardPri3.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
-        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jTabbedPane1.setForeground(new java.awt.Color(153, 0, 51));
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 0));
+        jTabbedPane1.setForeground(new java.awt.Color(204, 0, 0));
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 0, 51), new java.awt.Color(255, 0, 51), new java.awt.Color(255, 0, 51), new java.awt.Color(255, 0, 51)));
+        jPanel7.setForeground(new java.awt.Color(255, 0, 51));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel35.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -636,11 +639,11 @@ public class Admindashboard extends javax.swing.JFrame {
 
         jPanel7.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 570, 130));
 
-        jTabbedPane1.addTab("View Course Details", new javax.swing.ImageIcon("C:\\Users\\acer\\OneDrive\\Desktop\\JAVA\\FotTecmis\\photos\\image\\viewCoursr.png"), jPanel7); // NOI18N
+        jTabbedPane1.addTab("View Course Details", new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/viewCoursr.png")), jPanel7, "View Course Details"); // NOI18N
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jTabbedPane1.addTab("Add New Courses", new javax.swing.ImageIcon("C:\\Users\\acer\\OneDrive\\Desktop\\JAVA\\FotTecmis\\photos\\image\\addCoursrred.png"), jPanel8); // NOI18N
+        jTabbedPane1.addTab("Add New Courses", new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/addCoursrred.png")), jPanel8); // NOI18N
 
         CardPri3.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 59, 605, -1));
 

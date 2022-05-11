@@ -63,7 +63,7 @@ public class LogPageError extends javax.swing.JFrame {
         });
         jPanel2.add(rSButtonHover1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 130, 40));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\acer\\OneDrive\\Desktop\\JAVA\\FotTecmis\\photos\\icon\\Animated-SweetAlert-Icons.gif")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/Animated-SweetAlert-Icons.gif"))); // NOI18N
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-120, 0, 430, 130));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 250));

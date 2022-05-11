@@ -78,7 +78,7 @@
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\acer\OneDrive\Desktop\JAVA\FotTecmis\photos\loging_bg.png"/>
+              <Image iconType="3" name="/PHOTOS/loging_bg.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="jLabel4"/>
           </Properties>
@@ -91,7 +91,7 @@
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\acer\OneDrive\Desktop\JAVA\FotTecmis\photos\logo.png"/>
+              <Image iconType="3" name="/PHOTOS/fot-logo.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="jLabel6"/>
           </Properties>
@@ -127,7 +127,9 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="x"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/PHOTOS/close.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel1MouseClicked"/>
@@ -206,7 +208,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\acer\OneDrive\Desktop\JAVA\FotTecmis\photos\icon\login page icons\icons8_Secure_50px.png"/>
+              <Image iconType="3" name="/PHOTOS/icons8_Secure_50px.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Password :"/>
           </Properties>
@@ -225,7 +227,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\acer\OneDrive\Desktop\JAVA\FotTecmis\photos\icon\login page icons\icons8_Account_50px.png"/>
+              <Image iconType="3" name="/PHOTOS/icons8_Account_50px.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Username :"/>
           </Properties>
@@ -247,7 +249,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\acer\OneDrive\Desktop\JAVA\FotTecmis\photos\icon\login page icons\icons8_Forgot_Password_50px_4.png"/>
+              <Image iconType="3" name="/PHOTOS/icons8_Forgot_Password_50px_4.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Forgot Password?"/>
           </Properties>

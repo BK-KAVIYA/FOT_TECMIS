@@ -47,7 +47,7 @@ public class Splash extends javax.swing.JFrame {
         Myprogress.setBackground(new java.awt.Color(204, 0, 51));
         Myprogress.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\acer\\OneDrive\\Desktop\\JAVA\\FotTecmis\\photos\\logo-removebg-preview.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/logo-removebg-preview.png"))); // NOI18N
         jLabel1.setText("jLabel1");
 
         jLabel3.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
