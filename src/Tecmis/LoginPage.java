@@ -206,7 +206,7 @@ public class LoginPage extends javax.swing.JFrame {
             if(role==1){
                 this.dispose(); //close the loging page
                 Admindashboard apage=new Admindashboard();
-            apage.admin_setting(username);
+                apage.admin_setting(username);
                 apage.show();
             }else if(role==2){
                 //Lecture Login
