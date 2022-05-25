@@ -12,6 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,11 +26,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Admindashboard extends javax.swing.JFrame {
 
-   CardLayout cardLayout1;
+    CardLayout cardLayout1;
+    private static String userID;
+    Connection conn1;
+    PreparedStatement insert;
+    PreparedStatement update;
+
     public Admindashboard() {
         initComponents();
-        admin_onload();
-        course_table_update();
         cardLayout1 =(CardLayout)(CardjPannel.getLayout());
     }
 
@@ -46,7 +51,7 @@ public class Admindashboard extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        adName = new javax.swing.JLabel();
         menutimetable = new rojerusan.RSMaterialButtonRectangle();
         menuuser = new rojerusan.RSMaterialButtonRectangle();
         menucourse = new rojerusan.RSMaterialButtonRectangle();
@@ -100,7 +105,7 @@ public class Admindashboard extends javax.swing.JFrame {
         ShowPassword = new javax.swing.JCheckBox();
         txtPhone = new javax.swing.JTextField();
         txtDOB = new javax.swing.JTextField();
-        StUpdate = new rojerusan.RSMaterialButtonRectangle();
+        AdUpdate = new rojerusan.RSMaterialButtonRectangle();
         jLabel31 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         CardPri3 = new javax.swing.JPanel();
@@ -159,6 +164,8 @@ public class Admindashboard extends javax.swing.JFrame {
         jLabel45 = new javax.swing.JLabel();
         cLevel = new javax.swing.JComboBox<>();
         cclear = new javax.swing.JButton();
+        jLabel78 = new javax.swing.JLabel();
+        jLabel79 = new javax.swing.JLabel();
         CardPri4 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
@@ -228,6 +235,8 @@ public class Admindashboard extends javax.swing.JFrame {
         sub2type = new javax.swing.JComboBox<>();
         sub3type = new javax.swing.JComboBox<>();
         sub4type = new javax.swing.JComboBox<>();
+        jLabel80 = new javax.swing.JLabel();
+        jLabel81 = new javax.swing.JLabel();
         CardPri5 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jTabbedPane3 = new javax.swing.JTabbedPane();
@@ -239,9 +248,24 @@ public class Admindashboard extends javax.swing.JFrame {
         timeTablesView = new javax.swing.JTextArea();
         jButton6 = new javax.swing.JButton();
         jPanel14 = new javax.swing.JPanel();
+        jLabel73 = new javax.swing.JLabel();
+        jLabel74 = new javax.swing.JLabel();
+        jLabel75 = new javax.swing.JLabel();
+        jLabel76 = new javax.swing.JLabel();
+        noticeNum = new javax.swing.JTextField();
+        noticeTitle = new javax.swing.JTextField();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        noticeContent = new javax.swing.JTextArea();
+        clearNotice = new javax.swing.JButton();
+        addNotice = new javax.swing.JButton();
+        jLabel77 = new javax.swing.JLabel();
+        noticeDate = new javax.swing.JTextField();
+        jLabel82 = new javax.swing.JLabel();
+        jLabel83 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Admin Dashboard");
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(204, 0, 51));
@@ -265,11 +289,12 @@ public class Admindashboard extends javax.swing.JFrame {
         jLabel6.setText("jLabel6");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 89, 115, 100));
 
-        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("B. Kavinda");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 195, 125, -1));
+        adName.setBackground(new java.awt.Color(255, 255, 255));
+        adName.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
+        adName.setForeground(new java.awt.Color(255, 255, 255));
+        adName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        adName.setText("B. Kavinda");
+        jPanel1.add(adName, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 195, 240, -1));
 
         menutimetable.setBackground(new java.awt.Color(153, 0, 0));
         menutimetable.setText("Time Tables");
@@ -560,15 +585,11 @@ public class Admindashboard extends javax.swing.JFrame {
         CardPri2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 73, -1, 32));
 
         selStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "admin1", "admin2", "admin3" }));
-        selStatus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selStatusActionPerformed(evt);
-            }
-        });
+        
         CardPri2.add(selStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 196, 186, 28));
 
         jLabel21.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel21.setText("Student Status");
+        jLabel21.setText("Admin Status");
         CardPri2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, -1, 32));
         CardPri2.add(txtLName, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 194, 260, 29));
 
@@ -633,13 +654,13 @@ public class Admindashboard extends javax.swing.JFrame {
         CardPri2.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 470, 193, 29));
         CardPri2.add(txtDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 470, 176, 29));
 
-        StUpdate.setText("Update");
-        StUpdate.addActionListener(new java.awt.event.ActionListener() {
+        AdUpdate.setText("Update");
+        AdUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                StUpdateActionPerformed(evt);
+                AdUpdateActionPerformed(evt);
             }
         });
-        CardPri2.add(StUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(562, 500, 107, 40));
+        CardPri2.add(AdUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 500, 107, 40));
 
         jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/man-with-beard-avatar-character-isolated-icon-free-vector-removebg-preview-removebg-preview.png"))); // NOI18N
         jLabel31.setText("jLabel31");
@@ -707,11 +728,7 @@ public class Admindashboard extends javax.swing.JFrame {
         jPanel7.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 60, 86, 22));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ICT", "ET", "BST", "MUL" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
+        
         jPanel7.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 56, 206, 30));
 
         jButton3.setBackground(new java.awt.Color(255, 0, 51));
@@ -724,11 +741,7 @@ public class Admindashboard extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Reset");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
+
         jPanel7.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, 70, -1));
 
         jTable1.setForeground(new java.awt.Color(204, 0, 102));
@@ -1030,6 +1043,24 @@ public class Admindashboard extends javax.swing.JFrame {
 
         CardPri3.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 59, 605, -1));
 
+        jLabel78.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/minimize.png"))); // NOI18N
+        jLabel78.setText("jLabel29");
+        jLabel78.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel78MouseClicked(evt);
+            }
+        });
+        CardPri3.add(jLabel78, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 20, -1));
+
+        jLabel79.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/close.png"))); // NOI18N
+        jLabel79.setText("jLabel17");
+        jLabel79.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel79MouseClicked(evt);
+            }
+        });
+        CardPri3.add(jLabel79, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 18, 20));
+
         CardjPannel.add(CardPri3, "CardPri3");
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
@@ -1040,6 +1071,8 @@ public class Admindashboard extends javax.swing.JFrame {
         jTabbedPane2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 0, 51), new java.awt.Color(255, 0, 51), new java.awt.Color(255, 0, 51), new java.awt.Color(255, 0, 51)));
+        jPanel10.setForeground(new java.awt.Color(255, 255, 255));
         jPanel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -1070,7 +1103,7 @@ public class Admindashboard extends javax.swing.JFrame {
                 jButton5MouseClicked(evt);
             }
         });
-        jPanel10.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 70, 30));
+        jPanel10.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 80, 30));
 
         timesub.setBackground(new java.awt.Color(255, 51, 51));
         timesub.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -1086,7 +1119,7 @@ public class Admindashboard extends javax.swing.JFrame {
                 timesubActionPerformed(evt);
             }
         });
-        jPanel10.add(timesub, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 70, 30));
+        jPanel10.add(timesub, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 80, 30));
 
         jLabel48.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel48.setForeground(new java.awt.Color(255, 153, 0));
@@ -1177,6 +1210,8 @@ public class Admindashboard extends javax.swing.JFrame {
         jTabbedPane2.addTab("View Time Table", new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/timetableListr.png")), jPanel10); // NOI18N
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 0, 51), new java.awt.Color(255, 0, 51), new java.awt.Color(255, 0, 51), new java.awt.Color(255, 0, 51)));
+        jPanel11.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel53.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel53.setForeground(new java.awt.Color(153, 0, 51));
@@ -1450,7 +1485,7 @@ public class Admindashboard extends javax.swing.JFrame {
                             .addComponent(sub2type, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(sub3type, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(sub4type, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1535,6 +1570,24 @@ public class Admindashboard extends javax.swing.JFrame {
 
         jPanel9.add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 620, 510));
 
+        jLabel80.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/minimize.png"))); // NOI18N
+        jLabel80.setText("jLabel29");
+        jLabel80.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel80MouseClicked(evt);
+            }
+        });
+        jPanel9.add(jLabel80, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 20, -1));
+
+        jLabel81.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/close.png"))); // NOI18N
+        jLabel81.setText("jLabel17");
+        jLabel81.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel81MouseClicked(evt);
+            }
+        });
+        jPanel9.add(jLabel81, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 18, 20));
+
         javax.swing.GroupLayout CardPri4Layout = new javax.swing.GroupLayout(CardPri4);
         CardPri4.setLayout(CardPri4Layout);
         CardPri4Layout.setHorizontalGroup(
@@ -1556,6 +1609,7 @@ public class Admindashboard extends javax.swing.JFrame {
         jTabbedPane3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel13.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 0, 51), new java.awt.Color(255, 0, 51), new java.awt.Color(255, 0, 51), new java.awt.Color(255, 0, 51)));
         jPanel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabel72.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -1611,7 +1665,7 @@ public class Admindashboard extends javax.swing.JFrame {
                 .addComponent(jLabel72)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
+                .addContainerGap(46, Short.MAX_VALUE)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1632,7 +1686,7 @@ public class Admindashboard extends javax.swing.JFrame {
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -1640,21 +1694,136 @@ public class Admindashboard extends javax.swing.JFrame {
         jTabbedPane3.addTab("View Notice", new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/noticeList.png")), jPanel13); // NOI18N
 
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel14.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 0, 51), new java.awt.Color(255, 0, 51), new java.awt.Color(255, 0, 51), new java.awt.Color(255, 0, 51)));
+
+        jLabel73.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel73.setForeground(new java.awt.Color(255, 153, 0));
+        jLabel73.setText("Add Notices");
+
+        jLabel74.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel74.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel74.setText("Notice number");
+
+        jLabel75.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel75.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel75.setText("Title of the notice");
+
+        jLabel76.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel76.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel76.setText("Content of the notice");
+
+        noticeNum.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+
+        noticeTitle.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+
+        noticeContent.setColumns(20);
+        noticeContent.setRows(5);
+        jScrollPane10.setViewportView(noticeContent);
+
+        clearNotice.setBackground(new java.awt.Color(255, 0, 51));
+        clearNotice.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        clearNotice.setForeground(new java.awt.Color(255, 255, 255));
+        clearNotice.setText("Clear");
+        clearNotice.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clearNoticeMouseClicked(evt);
+            }
+        });
+
+        addNotice.setBackground(new java.awt.Color(255, 0, 51));
+        addNotice.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        addNotice.setForeground(new java.awt.Color(255, 255, 255));
+        addNotice.setText("Add");
+        addNotice.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addNoticeMouseClicked(evt);
+            }
+        });
+
+        jLabel77.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel77.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel77.setText("Date");
+
+        noticeDate.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 615, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel73)
+                .addGap(247, 247, 247))
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel74)
+                            .addComponent(jLabel75)
+                            .addComponent(jLabel76)
+                            .addComponent(jLabel77))
+                        .addGap(33, 33, 33)
+                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+                            .addComponent(noticeTitle)
+                            .addComponent(noticeNum)
+                            .addComponent(noticeDate)))
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addComponent(clearNotice, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(addNotice, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 486, Short.MAX_VALUE)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel73, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel74)
+                    .addComponent(noticeNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel75)
+                    .addComponent(noticeTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel77)
+                    .addComponent(noticeDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel76))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addNotice)
+                    .addComponent(clearNotice))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Add Notice", new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/addNotice.png")), jPanel14); // NOI18N
 
         jPanel12.add(jTabbedPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 620, 530));
+
+        jLabel82.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/minimize.png"))); // NOI18N
+        jLabel82.setText("jLabel29");
+        jLabel82.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel82MouseClicked(evt);
+            }
+        });
+        jPanel12.add(jLabel82, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 20, -1));
+
+        jLabel83.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/close.png"))); // NOI18N
+        jLabel83.setText("jLabel17");
+        jLabel83.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel83MouseClicked(evt);
+            }
+        });
+        jPanel12.add(jLabel83, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 18, 20));
 
         javax.swing.GroupLayout CardPri5Layout = new javax.swing.GroupLayout(CardPri5);
         CardPri5.setLayout(CardPri5Layout);
@@ -1677,9 +1846,17 @@ public class Admindashboard extends javax.swing.JFrame {
 
 //Couuse details tab
 
-        Connection conn1;
-        PreparedStatement insert;
+    public String getUser() {
+        return userID;
+    }
 
+    /**
+     *
+     * @param aUser
+     */
+    public void setUser(String aUser) {
+        userID = aUser;
+    }  
 private void course_table_update(){
     int c;
     try {
@@ -1749,11 +1926,17 @@ private void notice_table_update(){
             Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
         }
 }
-private void admin_onload(){
+public void admin_onload(String ID){
     int lec,stu,demo,c;
     try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+            insert=conn1.prepareStatement("select f_name from admin where admin_id='"+ID+"'");
+            ResultSet admName= insert.executeQuery();
+            admName.next();
+            String adminName=admName.getString("f_name");
+            adName.setText(adminName);
+
             insert=conn1.prepareStatement("select count(*) as rowcount  from students");
             ResultSet rsscount= insert.executeQuery();
             rsscount.next();
@@ -1775,7 +1958,7 @@ private void admin_onload(){
             lecCount.setText(Integer.toString(lec));
             demoCount.setText(Integer.toString(demo));
 
-        insert=conn1.prepareStatement("select * from department");
+            insert=conn1.prepareStatement("select * from department");
             ResultSet depid= insert.executeQuery();
             while(depid.next()){
 
@@ -1799,6 +1982,7 @@ private void admin_onload(){
         } catch (SQLException ex) {
             Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
         }
+     
 
     }
 
@@ -1822,7 +2006,7 @@ private void admin_onload(){
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
- 
+    admin_setting(); 
     cardLayout1.show(CardjPannel,"CardPri2");
     }//GEN-LAST:event_jLabel8MouseClicked
 
@@ -1838,12 +2022,12 @@ private void admin_onload(){
         }
     }//GEN-LAST:event_jLabel17MouseClicked
 
-public void admin_setting(String ID){
+public void admin_setting(){
     int c;
     try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
-            insert=conn1.prepareStatement("select *  from admin where admin_id='"+ID+"'");
+            insert=conn1.prepareStatement("select *  from admin where admin_id='"+userID+"'");
             ResultSet rs= insert.executeQuery();
             ResultSetMetaData Rss=rs.getMetaData();
             c=Rss.getColumnCount();
@@ -1869,7 +2053,7 @@ public void admin_setting(String ID){
                 }
             }
 
-            insert=conn1.prepareStatement("select *  from log_user where Uname='"+ID+"'");
+            insert=conn1.prepareStatement("select *  from log_user where Uname='"+userID+"'");
             ResultSet rs1= insert.executeQuery();
             ResultSetMetaData Rss1=rs.getMetaData();
             c=Rss1.getColumnCount();
@@ -1889,12 +2073,9 @@ public void admin_setting(String ID){
         }
 
 }
-    private void StUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StUpdateActionPerformed
-       /* DefaultTableModel df=(DefaultTableModel)jTable2.getModel();
-        int selectedIndex=jTable2.getSelectedRow();
-        try {
-            //int id=Integer.parseInt(df.getValueAt(selectedIndex,0).toString());
+    private void AdUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdUpdateActionPerformed
 
+        try {
             String RegNO=txtRegNo.getText();
             String FName=txtFName.getText();
             String LName=txtLName.getText();
@@ -1907,7 +2088,7 @@ public void admin_setting(String ID){
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
-            insert=conn1.prepareStatement("update  students set index_num=?,f_name=?,l_name=?,address_l1=?,address_l2=?,gender=?,dob=?,phone_num=?,st_type=? where index_num=?");
+            insert=conn1.prepareStatement("update  admin set admin_id =?,f_name=?,l_name=?,address_l1=?,address_l2=?,gender=?,dob=?,phone_num=?,admin_role=? where admin_id=?");
             insert.setString(1, RegNO);
             insert.setString(2, FName);
             insert.setString(3, LName);
@@ -1919,34 +2100,41 @@ public void admin_setting(String ID){
             insert.setString(9,Type );
             insert.setString(10, RegNO);
 
-            insert.executeUpdate();
+            String AdPwd=adPwd.getText();
+            String AdCpwd=adCPwd.getText();
+            update=conn1.prepareStatement("update  log_user set Password=? where Uname=?");
+            update.setString(1, AdPwd);
+            update.setString(2, RegNO);
 
-            JOptionPane.showMessageDialog(this,"Recode Update!!");
-            stu_table_update();
-
-            txtRegNo.setText("");
-            txtFName.setText("");
-            txtLName.setText("");
-            txtAddress.setText("");
-            txtCity.setText("");
-            txtDOB.setText("");
-            txtPhone.setText("");
-            txtRegNo.requestFocus();
-
+        if(RegNO.isEmpty() || FName.isEmpty() || LName.isEmpty() || Address.isEmpty() || City.isEmpty() || Gender.isEmpty() || DOB.isEmpty() || Telephone.isEmpty() || AdPwd.isEmpty() || AdCpwd.isEmpty()){
+            JOptionPane.showMessageDialog(this,"Fill the all the fields!!");
+         }else{
+                if(AdPwd.equals(AdCpwd)){
+                    insert.executeUpdate();
+                    update.executeUpdate();
+                    JOptionPane.showMessageDialog(this,"Profile Update!!");
+                }else{
+                    JOptionPane.showMessageDialog(this,"Password not matched!!");
+                }
+                    
+        }
+            
         } catch (ClassNotFoundException classNotFoundException) {
             System.out.println("File not found");
 
         } catch (SQLException ex) {
             Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-    }//GEN-LAST:event_StUpdateActionPerformed
+        }
+    }//GEN-LAST:event_AdUpdateActionPerformed
 
-    private void selStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selStatusActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_selStatusActionPerformed
+   
 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
-        System.exit(0);
+        int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Exit?", "Warnning",JOptionPane.YES_NO_OPTION);
+
+        if(dialogResult==JOptionPane.YES_NO_OPTION){    
+                System.exit(0);
+        }
     }//GEN-LAST:event_jLabel18MouseClicked
 
     private void jLabel29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel29MouseClicked
@@ -1967,21 +2155,15 @@ public void admin_setting(String ID){
     }//GEN-LAST:event_ShowPasswordMouseClicked
 
     private void jLabel30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseClicked
-        // TODO add your handling code here:
+       this.setState(ICONIFIED);
     }//GEN-LAST:event_jLabel30MouseClicked
 
     private void menucourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menucourseActionPerformed
+        course_table_update();
         cardLayout1.show(CardjPannel,"CardPri3");
     }//GEN-LAST:event_menucourseActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
+    
     private void assessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assessActionPerformed
         if(assess.isSelected()){
             assessMark.setEnabled(true);
@@ -2147,6 +2329,9 @@ private void clear_cource_fields(){
     private void menunoticeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menunoticeActionPerformed
         cardLayout1.show(CardjPannel,"CardPri5");
         notice_table_update();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+        LocalDateTime now = LocalDateTime.now();  
+        noticeDate.setText(dtf.format(now));
     }//GEN-LAST:event_menunoticeActionPerformed
 
     private void tdepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tdepActionPerformed
@@ -2606,6 +2791,92 @@ private void time_table_clear(){
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
         timeTablesView.setText("");
     }//GEN-LAST:event_jButton6MouseClicked
+private void clear_add_notice(){
+   noticeNum.setText("");
+   noticeTitle.setText("");
+   noticeContent.setText("");
+   DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+   LocalDateTime now = LocalDateTime.now();  
+   noticeDate.setText(dtf.format(now));
+
+} 
+    private void addNoticeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addNoticeMouseClicked
+                String noticeNumber=noticeNum.getText();
+                String noticeTl=noticeTitle.getText();
+                String noticeD=noticeDate.getText();
+                String noticeCon=noticeContent.getText();
+
+
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+                insert=conn1.prepareStatement("INSERT INTO notice( Notice_ID, Subject,Content, DATE)VALUES (?,?,?,?)");
+                insert.setString(1, noticeNumber);
+                insert.setString(2, noticeTl);
+                insert.setString(3,noticeCon);
+                insert.setString(4, noticeD);
+
+
+
+                if(noticeNumber.isEmpty() || noticeTl.isEmpty() || noticeCon.isEmpty()){
+
+                    JOptionPane.showMessageDialog(this,"Please fill the all the fields");
+
+                }else{
+
+                        insert.executeUpdate();
+                        clear_add_notice();
+
+                }
+            
+
+                } catch (ClassNotFoundException classNotFoundException) {
+                        System.out.println("File not found");
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+                }
+    }//GEN-LAST:event_addNoticeMouseClicked
+
+    private void clearNoticeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearNoticeMouseClicked
+        clear_add_notice();
+    }//GEN-LAST:event_clearNoticeMouseClicked
+
+    private void jLabel78MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel78MouseClicked
+       this.setState(ICONIFIED);
+    }//GEN-LAST:event_jLabel78MouseClicked
+
+    private void jLabel79MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel79MouseClicked
+       int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Exit?", "Warnning",JOptionPane.YES_NO_OPTION);
+
+        if(dialogResult==JOptionPane.YES_NO_OPTION){    
+                System.exit(0);
+        }
+    }//GEN-LAST:event_jLabel79MouseClicked
+
+    private void jLabel80MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel80MouseClicked
+        this.setState(ICONIFIED);
+    }//GEN-LAST:event_jLabel80MouseClicked
+
+    private void jLabel81MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel81MouseClicked
+        int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Exit?", "Warnning",JOptionPane.YES_NO_OPTION);
+
+        if(dialogResult==JOptionPane.YES_NO_OPTION){    
+                System.exit(0);
+        }
+    }//GEN-LAST:event_jLabel81MouseClicked
+
+    private void jLabel82MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel82MouseClicked
+       this.setState(ICONIFIED);
+    }//GEN-LAST:event_jLabel82MouseClicked
+
+    private void jLabel83MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel83MouseClicked
+        int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Exit?", "Warnning",JOptionPane.YES_NO_OPTION);
+
+        if(dialogResult==JOptionPane.YES_NO_OPTION){    
+                System.exit(0);
+        }
+    }//GEN-LAST:event_jLabel83MouseClicked
 /**/
     /**
      * @param args the command line arguments
@@ -2643,6 +2914,7 @@ private void time_table_clear(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private rojerusan.RSMaterialButtonRectangle AdUpdate;
     private javax.swing.JPanel CardPri1;
     private javax.swing.JPanel CardPri2;
     private javax.swing.JPanel CardPri3;
@@ -2651,9 +2923,10 @@ private void time_table_clear(){
     private javax.swing.JPanel CardjPannel;
     private javax.swing.JTable NoticeTbale;
     private javax.swing.JCheckBox ShowPassword;
-    private rojerusan.RSMaterialButtonRectangle StUpdate;
     private javax.swing.JPasswordField adCPwd;
+    private javax.swing.JLabel adName;
     private javax.swing.JPasswordField adPwd;
+    private javax.swing.JButton addNotice;
     private javax.swing.JCheckBox assess;
     private javax.swing.JTextField assessMark;
     private javax.swing.JTextField cCredite;
@@ -2661,6 +2934,7 @@ private void time_table_clear(){
     private javax.swing.JTextField cName;
     private javax.swing.JButton cadd;
     private javax.swing.JButton cclear;
+    private javax.swing.JButton clearNotice;
     private javax.swing.JTextField courseId;
     private javax.swing.JLabel courseMarkMessage;
     private javax.swing.JLabel demoCount;
@@ -2718,7 +2992,6 @@ private void time_table_clear(){
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
@@ -2744,7 +3017,18 @@ private void time_table_clear(){
     private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel71;
     private javax.swing.JLabel jLabel72;
+    private javax.swing.JLabel jLabel73;
+    private javax.swing.JLabel jLabel74;
+    private javax.swing.JLabel jLabel75;
+    private javax.swing.JLabel jLabel76;
+    private javax.swing.JLabel jLabel77;
+    private javax.swing.JLabel jLabel78;
+    private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel80;
+    private javax.swing.JLabel jLabel81;
+    private javax.swing.JLabel jLabel82;
+    private javax.swing.JLabel jLabel83;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -2761,6 +3045,7 @@ private void time_table_clear(){
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -2784,6 +3069,10 @@ private void time_table_clear(){
     private rojerusan.RSMaterialButtonRectangle menuuser;
     private javax.swing.JCheckBox mid;
     private javax.swing.JTextField midMark;
+    private javax.swing.JTextArea noticeContent;
+    private javax.swing.JTextField noticeDate;
+    private javax.swing.JTextField noticeNum;
+    private javax.swing.JTextField noticeTitle;
     private javax.swing.JCheckBox practical;
     private javax.swing.JTextField practicalMark;
     private javax.swing.JCheckBox quiz;
