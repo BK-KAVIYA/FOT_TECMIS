@@ -500,7 +500,7 @@ public class Admindashboard extends javax.swing.JFrame {
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(398, Short.MAX_VALUE))
+                .addContainerGap(394, Short.MAX_VALUE))
         );
         CardPri1Layout.setVerticalGroup(
             CardPri1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1718,7 +1718,7 @@ private void course_table_update(){
                 System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Admindashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 }
@@ -1746,7 +1746,7 @@ private void notice_table_update(){
                 System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Admindashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
 }
 private void admin_onload(){
@@ -1797,7 +1797,7 @@ private void admin_onload(){
                 System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Admindashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -1885,7 +1885,7 @@ public void admin_setting(String ID){
                 System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Admindashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 }
@@ -2134,7 +2134,7 @@ private void clear_cource_fields(){
                 System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Admindashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
         
 
@@ -2426,7 +2426,7 @@ private void clear_timetable_fields(){
                 System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Admindashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
         
             }
@@ -2468,7 +2468,7 @@ private void clear_timetable_fields(){
                         System.out.println("File not found");
 
                 } catch (SQLException ex) {
-                    Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Admindashboard.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
@@ -2509,7 +2509,7 @@ private void clear_timetable_fields(){
                         System.out.println("File not found");
 
                 } catch (SQLException ex) {
-                    Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Admindashboard.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
@@ -2551,7 +2551,7 @@ private void clear_timetable_fields(){
                         System.out.println("File not found");
 
                 } catch (SQLException ex) {
-                    Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Admindashboard.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
@@ -2598,7 +2598,7 @@ private void time_table_clear(){
                 System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Admindashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_NoticeTbaleMouseClicked

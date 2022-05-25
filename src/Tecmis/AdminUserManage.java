@@ -784,7 +784,7 @@ private void stu_table_update(){
                 System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminUserManage.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 }
@@ -884,7 +884,7 @@ private void stu_table_update(){
                 System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminUserManage.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_StAddActionPerformed
@@ -939,7 +939,7 @@ private void stu_table_update(){
                 System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminUserManage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_StUpdateActionPerformed
 
@@ -978,7 +978,7 @@ private void stu_table_update(){
                 System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminUserManage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_StDeleteActionPerformed
 
@@ -1015,7 +1015,7 @@ private void lec_table_update(){
                 System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminUserManage.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 }
@@ -1082,7 +1082,7 @@ private void lec_table_update(){
                 System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminUserManage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_LecAddActionPerformed
 
@@ -1140,7 +1140,7 @@ private void lec_table_update(){
                 System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminUserManage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_LecDeleteActionPerformed
 
@@ -1194,7 +1194,7 @@ private void lec_table_update(){
                 System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminUserManage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_LecUpdateActionPerformed
 
@@ -1230,7 +1230,7 @@ private void to_table_update(){
                 System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminUserManage.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 }
@@ -1295,7 +1295,7 @@ private void to_table_update(){
                 System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminUserManage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_ToAddActionPerformed
 
@@ -1347,7 +1347,7 @@ private void to_table_update(){
                 System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminUserManage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_ToUpdateActionPerformed
 
@@ -1386,7 +1386,7 @@ private void to_table_update(){
                 System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminUserManage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_ToDeleteActionPerformed
 

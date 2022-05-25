@@ -235,7 +235,7 @@ public class LoginPage extends javax.swing.JFrame {
                 System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginPage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnlogActionPerformed
 

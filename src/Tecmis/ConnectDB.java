@@ -15,27 +15,26 @@ import java.util.logging.Logger;
  * @author KA VI YA
  */
 public class ConnectDB {
-    String driverMsg = "",driverErr = "",loginMsg = "",loginErr = "";
-    
-    public Connection MyDBConnection (String inuser, String inpass) {
+   
+   
+    public static Connection MyDBConnection () {
         String url = "jdbc:mysql://localhost:3306/fot_tecmis";
         String user = "root";
         String pass = "";
-        Connection connection = null;
-        
+        Connection conn1 = null;
+       
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            driverMsg = "Driver loaded...\n";
-            connection = DriverManager.getConnection(url,user,pass);
-            loginMsg = "Connected!\n";
+            conn1=DriverManager.getConnection(url,user,pass);
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ConnectDB.class.getName()).log(Level.SEVERE, null, ex);
-            driverErr = "Driver Error!\n";
+
         } catch (SQLException ex) {
-            loginErr = "User name or password incorrect!\n";
-            Logger.getLogger(ConnectDB.class.getName()).log(Level.SEVERE, null, ex);
+              Logger.getLogger(ConnectDB.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return connection;
+        return conn1;
     }
 }
+
  
