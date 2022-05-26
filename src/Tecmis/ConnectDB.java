@@ -16,13 +16,12 @@ import java.util.logging.Logger;
  */
 public class ConnectDB {
    
-   
+
     public static Connection MyDBConnection () {
         String url = "jdbc:mysql://localhost:3306/fot_tecmis";
         String user = "root";
         String pass = "";
         Connection conn1 = null;
-       
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn1=DriverManager.getConnection(url,user,pass);

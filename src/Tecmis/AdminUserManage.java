@@ -112,6 +112,8 @@ public class AdminUserManage extends javax.swing.JFrame {
         StCPwd1 = new javax.swing.JPasswordField();
         StPwd1 = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
         priCard3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         txtRegNo2 = new javax.swing.JTextField();
@@ -141,6 +143,8 @@ public class AdminUserManage extends javax.swing.JFrame {
         ToDelete = new rojerusan.RSMaterialButtonRectangle();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new rojeru_san.complementos.RSTableMetro();
+        jLabel47 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         rSMaterialButtonRectangle2 = new rojerusan.RSMaterialButtonRectangle();
@@ -510,6 +514,24 @@ public class AdminUserManage extends javax.swing.JFrame {
         jLabel7.setText("User Management >Lecturer->");
         priCard4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 41));
 
+        jLabel45.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/close.png"))); // NOI18N
+        jLabel45.setText("jLabel18");
+        jLabel45.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel45MouseClicked(evt);
+            }
+        });
+        priCard4.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 10, 20, -1));
+
+        jLabel46.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/minimize.png"))); // NOI18N
+        jLabel46.setText("jLabel29");
+        jLabel46.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel46MouseClicked(evt);
+            }
+        });
+        priCard4.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 10, 20, -1));
+
         javax.swing.GroupLayout priCard2Layout = new javax.swing.GroupLayout(priCard2);
         priCard2.setLayout(priCard2Layout);
         priCard2Layout.setHorizontalGroup(
@@ -675,6 +697,24 @@ public class AdminUserManage extends javax.swing.JFrame {
 
         priCard3.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 670, 140));
 
+        jLabel47.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/close.png"))); // NOI18N
+        jLabel47.setText("jLabel18");
+        jLabel47.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel47MouseClicked(evt);
+            }
+        });
+        priCard3.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 10, 20, -1));
+
+        jLabel48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/minimize.png"))); // NOI18N
+        jLabel48.setText("jLabel29");
+        jLabel48.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel48MouseClicked(evt);
+            }
+        });
+        priCard3.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 10, 20, -1));
+
         jPanel1.add(priCard3, "priCard3");
 
         jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 690, 620));
@@ -803,7 +843,7 @@ private void stu_table_update(){
     }//GEN-LAST:event_rSMaterialButtonRectangle3ActionPerformed
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
-        DefaultTableModel df=(DefaultTableModel)jTable2.getModel();
+            DefaultTableModel df=(DefaultTableModel)jTable2.getModel();
             int selectedIndex=jTable2.getSelectedRow();
             txtRegNo.setText(df.getValueAt(selectedIndex, 0).toString());
             txtFName.setText(df.getValueAt(selectedIndex, 1).toString());
@@ -1424,7 +1464,11 @@ private void to_table_update(){
     }//GEN-LAST:event_jLabel36MouseClicked
 
     private void jLabel44MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel44MouseClicked
-        System.exit(0);
+        int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Exit?", "Warnning",JOptionPane.YES_NO_OPTION);
+
+        if(dialogResult==JOptionPane.YES_NO_OPTION){    
+                System.exit(0);
+        }
     }//GEN-LAST:event_jLabel44MouseClicked
 
     private void ShowPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowPasswordMouseClicked
@@ -1439,6 +1483,30 @@ private void to_table_update(){
             ShowPassword.setText("Show Password");
         }
     }//GEN-LAST:event_ShowPasswordMouseClicked
+
+    private void jLabel45MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel45MouseClicked
+        int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Exit?", "Warnning",JOptionPane.YES_NO_OPTION);
+
+        if(dialogResult==JOptionPane.YES_NO_OPTION){    
+                System.exit(0);
+        }
+    }//GEN-LAST:event_jLabel45MouseClicked
+
+    private void jLabel46MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel46MouseClicked
+        this.setState(ICONIFIED);
+    }//GEN-LAST:event_jLabel46MouseClicked
+
+    private void jLabel47MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel47MouseClicked
+        int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Exit?", "Warnning",JOptionPane.YES_NO_OPTION);
+
+        if(dialogResult==JOptionPane.YES_NO_OPTION){    
+                System.exit(0);
+        }
+    }//GEN-LAST:event_jLabel47MouseClicked
+
+    private void jLabel48MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel48MouseClicked
+        this.setState(ICONIFIED);
+    }//GEN-LAST:event_jLabel48MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1531,6 +1599,10 @@ private void to_table_update(){
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

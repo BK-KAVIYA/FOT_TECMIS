@@ -50,7 +50,7 @@ public class Splash extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/logo-removebg-preview.png"))); // NOI18N
         jLabel1.setText("jLabel1");
 
-        jLabel3.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tw Cen MT", 1, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 153, 0));
         jLabel3.setText("University of Ruhuna");
 

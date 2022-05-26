@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -109,9 +110,10 @@ public class LoginPage extends javax.swing.JFrame {
         uname.setBackground(new java.awt.Color(153, 0, 51));
         uname.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         uname.setForeground(new java.awt.Color(255, 255, 255));
+        uname.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         uname.setPhColor(new java.awt.Color(255, 255, 255));
         uname.setPlaceholder("Enter Your Username");
-        jPanel3.add(uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 220, -1));
+        jPanel3.add(uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 210, -1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -165,7 +167,7 @@ public class LoginPage extends javax.swing.JFrame {
         pwd.setForeground(new java.awt.Color(255, 255, 255));
         pwd.setToolTipText("");
         pwd.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        jPanel3.add(pwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 316, 220, 30));
+        jPanel3.add(pwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 316, 210, 30));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 300, 600));
 
@@ -178,8 +180,11 @@ public class LoginPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel1MouseEntered
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        // TODO add your handling code here:
-       System.exit(0);
+      int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Exit?", "Warnning",JOptionPane.YES_NO_OPTION);
+
+        if(dialogResult==JOptionPane.YES_NO_OPTION){    
+                System.exit(0);
+        }
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void btnsingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsingActionPerformed
@@ -206,14 +211,26 @@ public class LoginPage extends javax.swing.JFrame {
             if(role==1){
                 this.dispose(); //close the loging page
                 Admindashboard apage=new Admindashboard();
-                apage.admin_setting(username);
+                apage.setUser(username);
+                apage.admin_onload(username);
                 apage.show();
             }else if(role==2){
-                //Lecture Login
+                this.dispose(); //close the loging page
+                Lecturerdashboard lbd = new Lecturerdashboard();
+                lbd.setUser(username);
+                lbd.lecturer_setting();
+                lbd.show();
             }else if(role==3){
-                //Demo go hear
+                this.dispose(); //close the loging page
+                TechnicalOfficerDashboard tpage=new TechnicalOfficerDashboard();
+                tpage.setUser(username);
+                tpage.show();
             }else if(role==4){
-                //student home page
+                this.dispose(); //close the loging page
+                StudentDashboard spage=new StudentDashboard();
+                spage.setUser(username);
+                spage.student_on_load();
+                spage.show();
             }else{
                 LogPageError error=new LogPageError();
                 error.show();
