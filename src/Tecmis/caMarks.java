@@ -35,6 +35,10 @@ public class caMarks {
     public double CAFinal=0;
     public String Status="";
     public String Grade="";
+    public String GFT="";
+    public double gpa=0.00;
+    public double sum=0.00;
+ 
 
     Connection conn1;
     PreparedStatement insert;
@@ -158,6 +162,44 @@ public String findGrade(double marks){
 		Grade="Not Valid";
 	}
 return Grade;
+}
+public double findGPA(double marks){
+
+                if (marks >= 80 && marks <= 100) {
+                    gpa = 4.0;
+                }
+                else if (marks < 75 && marks >= 70) {
+                    gpa = 3.7;
+                }
+                else if (marks < 70 && marks >= 65) {
+                    gpa = 3.3;
+                }
+                else if (marks < 65 && marks >= 60) {
+                    gpa = 3.0;
+                }
+                else if (marks < 60 && marks >=55) {
+                    gpa = 2.7;
+                }
+                else if (marks < 55 && marks >= 50) {
+                    gpa = 2.3;
+                }
+                else if (marks < 50 && marks >= 45) {
+                    gpa = 2.0;
+                }
+                else if (marks < 45 && marks >= 40) {
+                    gpa = 1.7;
+                }
+                else if (marks < 40 && marks >= 30) {
+                    gpa = 1.3;
+                }
+                else if (marks < 40 && marks >= 30) {
+                    gpa = 1.0;
+                }
+                else if (marks < 30) {
+                    gpa = 0.0;
+                }
+
+return gpa;
 }
    public String QuizMarks(){
         return df.format(fQuizmarks);

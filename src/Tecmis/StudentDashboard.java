@@ -10,6 +10,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
 import java.util.Vector;
 import java.util.logging.Logger;
@@ -23,6 +25,9 @@ import javax.swing.table.DefaultTableModel;
 public class StudentDashboard extends javax.swing.JFrame {
 
    Connection conn1=ConnectDB.MyDBConnection();
+   NumberFormat formatter = new DecimalFormat("#0.00");
+    private static DecimalFormat df = new DecimalFormat("0.00");     
+
     /**
      * Creates new form StudentDashboard
      */
@@ -33,6 +38,7 @@ public class StudentDashboard extends javax.swing.JFrame {
     private static String Subject_code;
     private static String CA_Status;
     private static String Grade;
+    private static double GPA;
    // private static String SEVERE;
 
     PreparedStatement insert;
@@ -179,7 +185,7 @@ public class StudentDashboard extends javax.swing.JFrame {
         jLabel67 = new javax.swing.JLabel();
         jLabel68 = new javax.swing.JLabel();
         jScrollPane12 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtGPA = new javax.swing.JTextArea();
         jLabel27 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
 
@@ -1068,16 +1074,21 @@ public class StudentDashboard extends javax.swing.JFrame {
 
         gradeTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Subject Code", "Subject Name", "Grade"
+                "Subject Code", "Subject Name", "Marks", "Grade"
             }
         ));
         jScrollPane10.setViewportView(gradeTable);
+        if (gradeTable.getColumnModel().getColumnCount() > 0) {
+            gradeTable.getColumnModel().getColumn(0).setPreferredWidth(20);
+            gradeTable.getColumnModel().getColumn(2).setPreferredWidth(20);
+            gradeTable.getColumnModel().getColumn(3).setPreferredWidth(20);
+        }
 
         jLabel67.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel67.setForeground(new java.awt.Color(153, 0, 51));
@@ -1087,10 +1098,12 @@ public class StudentDashboard extends javax.swing.JFrame {
         jLabel68.setForeground(new java.awt.Color(153, 0, 51));
         jLabel68.setText("Grades");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jTextArea1.setRows(5);
-        jScrollPane12.setViewportView(jTextArea1);
+        txtGPA.setColumns(12);
+        txtGPA.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        txtGPA.setRows(3);
+        txtGPA.setDisabledTextColor(new java.awt.Color(255, 0, 51));
+        txtGPA.setEnabled(false);
+        jScrollPane12.setViewportView(txtGPA);
 
         jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/close.png"))); // NOI18N
         jLabel27.setText("jLabel17");
@@ -1128,13 +1141,13 @@ public class StudentDashboard extends javax.swing.JFrame {
                                 .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(59, 59, 59)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel67)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(111, 111, 111)
-                                        .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jLabel67)))
                         .addGap(0, 39, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(215, 215, 215)
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGap(63, 63, 63)
@@ -1153,9 +1166,9 @@ public class StudentDashboard extends javax.swing.JFrame {
                 .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
                 .addComponent(jLabel67)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(235, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGap(80, 80, 80)
@@ -1362,8 +1375,8 @@ private void time_table_clear(){
             CID=conn1.prepareStatement("select *  from student_course_module where stmod_st_id='"+userID+"'");
             ResultSet CourseCode= CID.executeQuery();
             DefaultTableModel df=(DefaultTableModel)gradeTable.getModel();
-             df.setRowCount(0);                                
-           while(CourseCode.next()){
+            df.setRowCount(0);                                
+            while(CourseCode.next()){
  
                     String CName="";
                     String CCode=CourseCode.getString("stmod_cmod_id");
@@ -1380,10 +1393,27 @@ private void time_table_clear(){
                     double FinalCA=CAM.FinalCA();
                     double Marks=FinalCA+CAM.Fpractical()+CAM.Ftheory();
                     String grade=CAM.findGrade(Marks);
+                    v1.add(formatter.format(Marks));
                     v1.add(grade);
                     df.addRow(v1);
 
             }
+                double sum=0.00;
+                if(gradeTable.getRowCount()>0){
+                        int row = gradeTable.getRowCount();
+                        int i;
+                        
+                        for(i=0;i<row;i++){
+
+                            String marks =(String) gradeTable.getValueAt(i, 2);
+                            double mark=Double.parseDouble(marks);
+                            sum=sum+CAM.findGPA(mark);
+
+                        }
+                        txtGPA.append("Your GPA is :- ");
+                        txtGPA.append(Float.toString((float) (sum/row)));
+
+                    }
            
 
         } catch (SQLException ex) {
@@ -1882,7 +1912,6 @@ private void time_table_clear(){
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField mediSID;
     private rojerusan.RSMaterialButtonRectangle menucourse;
     private rojerusan.RSMaterialButtonRectangle menunotice;
@@ -1908,5 +1937,6 @@ private void time_table_clear(){
     private javax.swing.JTextArea tstues;
     private javax.swing.JTextArea tswed;
     private javax.swing.JTextArea ttmonday;
+    private javax.swing.JTextArea txtGPA;
     // End of variables declaration//GEN-END:variables
 }
