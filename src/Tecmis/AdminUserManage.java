@@ -6,7 +6,6 @@ package Tecmis;
 
 import java.awt.CardLayout;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -22,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
  * @author KA VI YA
  */
 public class AdminUserManage extends javax.swing.JFrame {
-
+    Connection conn1=ConnectDB.MyDBConnection();
     /**
      * Creates new form AdminUserManage
      */
@@ -788,14 +787,12 @@ public class AdminUserManage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-        Connection conn1;
+        
         PreparedStatement insert;
 
 private void stu_table_update(){
     int c;
     try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
             insert=conn1.prepareStatement("select *  from students");
             ResultSet rs= insert.executeQuery();
             ResultSetMetaData Rss=rs.getMetaData();
@@ -820,11 +817,9 @@ private void stu_table_update(){
                     df.addRow(v2);
             }
 
-        } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminUserManage.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 }
@@ -843,6 +838,7 @@ private void stu_table_update(){
     }//GEN-LAST:event_rSMaterialButtonRectangle3ActionPerformed
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+           
             DefaultTableModel df=(DefaultTableModel)jTable2.getModel();
             int selectedIndex=jTable2.getSelectedRow();
             txtRegNo.setText(df.getValueAt(selectedIndex, 0).toString());
@@ -864,6 +860,7 @@ private void stu_table_update(){
     }//GEN-LAST:event_jTable2MouseClicked
 
     private void StAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StAddActionPerformed
+            
             String RegNO=txtRegNo.getText();
             String FName=txtFName.getText();
             String LName=txtLName.getText();
@@ -876,12 +873,9 @@ private void stu_table_update(){
             String Password=StPwd.getText();
             String CPassword=StCPwd.getText();
 
- 
-        
 
             try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+            
             insert=conn1.prepareStatement("insert into students(index_num,f_name,l_name,address_l1,address_l2,gender,dob,phone_num,st_type) values (?,?,?,?,?,?,?,?,?)");
             insert.setString(1, RegNO);
             insert.setString(2, FName);
@@ -920,11 +914,8 @@ private void stu_table_update(){
             }
             
 
-        } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("File not found");
-
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminUserManage.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_StAddActionPerformed
@@ -933,7 +924,6 @@ private void stu_table_update(){
         DefaultTableModel df=(DefaultTableModel)jTable2.getModel();
         int selectedIndex=jTable2.getSelectedRow();
         try {
-        //int id=Integer.parseInt(df.getValueAt(selectedIndex,0).toString());
 
             String RegNO=txtRegNo.getText();
             String FName=txtFName.getText();
@@ -945,9 +935,6 @@ private void stu_table_update(){
             String Telephone=txtPhone.getText();
             String Type=(String)selStatus.getSelectedItem();
 
-
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
             insert=conn1.prepareStatement("update  students set index_num=?,f_name=?,l_name=?,address_l1=?,address_l2=?,gender=?,dob=?,phone_num=?,st_type=? where index_num=?");
             insert.setString(1, RegNO);
             insert.setString(2, FName);
@@ -975,15 +962,14 @@ private void stu_table_update(){
             txtPhone.setText("");
             txtRegNo.requestFocus();
 
-        } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminUserManage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_StUpdateActionPerformed
 
     private void StDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StDeleteActionPerformed
+        
         DefaultTableModel df=(DefaultTableModel)jTable2.getModel();
         int selectedIndex=jTable2.getSelectedRow();
     try {
@@ -991,8 +977,7 @@ private void stu_table_update(){
         int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Delete the Recode", "Warnning",JOptionPane.YES_NO_OPTION);
 
         if(dialogResult==JOptionPane.YES_NO_OPTION){
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+
 
             insert=conn1.prepareStatement("delete from students where index_num=?");
             insert.setString(1,index_num );
@@ -1014,19 +999,15 @@ private void stu_table_update(){
             txtPhone.setText("");
             txtRegNo.requestFocus();
             }
-        } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminUserManage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_StDeleteActionPerformed
 
 private void lec_table_update(){
     int c;
     try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
             insert=conn1.prepareStatement("select *  from lectures");
             ResultSet rs= insert.executeQuery();
             ResultSetMetaData Rss=rs.getMetaData();
@@ -1051,11 +1032,9 @@ private void lec_table_update(){
                     df.addRow(v2);
             }
 
-        } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("File not found");
-
+ 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminUserManage.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 }
@@ -1073,13 +1052,10 @@ private void lec_table_update(){
             String Position=(String)selStatus1.getSelectedItem();
             String Password=StPwd1.getText();
             String CPassword=StCPwd1.getText();
-
- 
-        
+   
 
             try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+
             insert=conn1.prepareStatement("insert into lectures(lec_id,f_name,l_name,address_l1,address_l2,gender,dob,phone_num,position) values (?,?,?,?,?,?,?,?,?)");
             insert.setString(1, RegNO);
             insert.setString(2, FName);
@@ -1118,15 +1094,13 @@ private void lec_table_update(){
             }
             
 
-        } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("File not found");
-
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminUserManage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_LecAddActionPerformed
 
     private void jTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseClicked
+            
             DefaultTableModel df=(DefaultTableModel)jTable3.getModel();
             int selectedIndex=jTable3.getSelectedRow();
             txtRegNo1.setText(df.getValueAt(selectedIndex, 0).toString());
@@ -1146,6 +1120,7 @@ private void lec_table_update(){
     }//GEN-LAST:event_jTable3MouseClicked
 
     private void LecDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LecDeleteActionPerformed
+       
         DefaultTableModel df=(DefaultTableModel)jTable3.getModel();
         int selectedIndex=jTable3.getSelectedRow();
     try {
@@ -1153,8 +1128,7 @@ private void lec_table_update(){
         int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Delete the Recode", "Warnning",JOptionPane.YES_NO_OPTION);
 
         if(dialogResult==JOptionPane.YES_NO_OPTION){
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+             Connection conn1=ConnectDB.MyDBConnection();
 
             insert=conn1.prepareStatement("delete from lectures where lec_id=?");
             insert.setString(1,index_num );
@@ -1176,11 +1150,9 @@ private void lec_table_update(){
             txtPhone1.setText("");
             txtRegNo1.requestFocus();
             }
-        } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminUserManage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_LecDeleteActionPerformed
 
@@ -1188,7 +1160,7 @@ private void lec_table_update(){
         DefaultTableModel df=(DefaultTableModel)jTable3.getModel();
         int selectedIndex=jTable3.getSelectedRow();
         try {
-        //int id=Integer.parseInt(df.getValueAt(selectedIndex,0).toString());
+ 
 
             String RegNO=txtRegNo1.getText();
             String FName=txtFName1.getText();
@@ -1201,8 +1173,7 @@ private void lec_table_update(){
             String Position=(String)selStatus1.getSelectedItem();
 
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+            Connection conn1=ConnectDB.MyDBConnection();
             insert=conn1.prepareStatement("update  lectures set lec_id=?,f_name=?,l_name=?,address_l1=?,address_l2=?,gender=?,dob=?,phone_num=?,position=? where lec_id=?");
             insert.setString(1, RegNO);
             insert.setString(2, FName);
@@ -1230,19 +1201,16 @@ private void lec_table_update(){
             txtPhone1.setText("");
             txtRegNo1.requestFocus();
 
-        } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminUserManage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_LecUpdateActionPerformed
 
 private void to_table_update(){
     int c;
     try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+             Connection conn1=ConnectDB.MyDBConnection();
             insert=conn1.prepareStatement("select *  from technical_officers");
             ResultSet rs= insert.executeQuery();
             ResultSetMetaData Rss=rs.getMetaData();
@@ -1266,11 +1234,8 @@ private void to_table_update(){
                     df.addRow(v2);
             }
 
-        } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("File not found");
-
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminUserManage.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 }
@@ -1287,12 +1252,8 @@ private void to_table_update(){
             String Password=StPwd2.getText();
             String CPassword=StCPwd2.getText();
 
- 
-        
-
             try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+            Connection conn1=ConnectDB.MyDBConnection();
             insert=conn1.prepareStatement("insert into technical_officers(to_id,f_name,l_name,address_l1,address_l2,gender,dob,phone_num) values (?,?,?,?,?,?,?,?)");
             insert.setString(1, RegNO);
             insert.setString(2, FName);
@@ -1329,13 +1290,9 @@ private void to_table_update(){
                 StPwd2.setText("");
                 StCPwd2.setText("");
             }
-            
-
-        } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminUserManage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_ToAddActionPerformed
 
@@ -1354,9 +1311,6 @@ private void to_table_update(){
             String Telephone=txtPhone2.getText();
 
 
-
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
             insert=conn1.prepareStatement("update  technical_officers set to_id=?,f_name=?,l_name=?,address_l1=?,address_l2=?,gender=?,dob=?,phone_num=? where to_id=?");
             insert.setString(1, RegNO);
             insert.setString(2, FName);
@@ -1383,11 +1337,8 @@ private void to_table_update(){
             txtPhone2.setText("");
             txtRegNo2.requestFocus();
 
-        } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("File not found");
-
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminUserManage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_ToUpdateActionPerformed
 
@@ -1399,8 +1350,7 @@ private void to_table_update(){
         int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Delete the Recode", "Warnning",JOptionPane.YES_NO_OPTION);
 
         if(dialogResult==JOptionPane.YES_NO_OPTION){
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+
 
             insert=conn1.prepareStatement("delete from technical_officers where to_id=?");
             insert.setString(1,index_num );
@@ -1422,11 +1372,9 @@ private void to_table_update(){
             txtPhone2.setText("");
             txtRegNo2.requestFocus();
             }
-        } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminUserManage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_ToDeleteActionPerformed
 

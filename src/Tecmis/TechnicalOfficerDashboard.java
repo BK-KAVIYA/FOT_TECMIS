@@ -22,13 +22,12 @@ import javax.swing.table.DefaultTableModel;
  * @author KA VI YA
  */
 public class TechnicalOfficerDashboard extends javax.swing.JFrame {
-
+    Connection conn1=ConnectDB.MyDBConnection();
     /**
      * Creates new form TechnicalOfficerDashboard
      */
     private static String userID;
     private static String depID;
-    Connection conn1;
     PreparedStatement insert;
     
     //ConnectDB myConnectDb = new ConnectDB();
@@ -1148,8 +1147,7 @@ public class TechnicalOfficerDashboard extends javax.swing.JFrame {
 public void technical_officer_setting(){
     int c;
     try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+
             insert=conn1.prepareStatement("select *  from technical_officers where to_id='"+userID+"'");
             ResultSet rs= insert.executeQuery();
             ResultSetMetaData Rss=rs.getMetaData();
@@ -1173,19 +1171,16 @@ public void technical_officer_setting(){
                 }
             }
 
-        } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TechnicalOfficerDashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 }
 private void attendance_table_update(){
     int c;
     try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+
             insert=conn1.prepareStatement("select *  from attendance");
             ResultSet rs= insert.executeQuery();
             ResultSetMetaData Rss=rs.getMetaData();
@@ -1206,19 +1201,16 @@ private void attendance_table_update(){
                     df.addRow(v2);
             }
 
-        } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TechnicalOfficerDashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 } 
 private void medical_table_update(){
     int c;
     try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+
             insert=conn1.prepareStatement("select *  from medical");
             ResultSet rs= insert.executeQuery();
             ResultSetMetaData Rss=rs.getMetaData();
@@ -1240,18 +1232,15 @@ private void medical_table_update(){
                     df.addRow(v2);
             }
 
-        } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TechnicalOfficerDashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 }             
     private void menutimetableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menutimetableMouseClicked
        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+
             insert=conn1.prepareStatement("select dep_id  from technical_officers where to_id='"+userID+"'");
             ResultSet rs= insert.executeQuery();
   
@@ -1259,11 +1248,9 @@ private void medical_table_update(){
                    depID=rs.getString("dep_id");
              }
 
-        } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TechnicalOfficerDashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_menutimetableMouseClicked
 
@@ -1272,8 +1259,7 @@ private void medical_table_update(){
     }//GEN-LAST:event_menutimetableActionPerformed
 private void notice_table_update(){
     try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+ 
             insert=conn1.prepareStatement("select *  from notice");
             ResultSet rs= insert.executeQuery();
   
@@ -1290,11 +1276,9 @@ private void notice_table_update(){
                     df.addRow(v1);
              }
 
-        } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TechnicalOfficerDashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
 }
     private void menuuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuuserActionPerformed
@@ -1342,8 +1326,7 @@ private void notice_table_update(){
         int selectedIndex=NoticeTbale.getSelectedRow();
         String NoticeID=(df.getValueAt(selectedIndex, 0).toString());
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+
             insert=conn1.prepareStatement("select *  from notice where Notice_ID='"+NoticeID+"'");
             ResultSet rs= insert.executeQuery();
 
@@ -1352,11 +1335,8 @@ private void notice_table_update(){
                 timeTablesView.append("\nDate :- "+rs.getString("DATE")+"\n"+rs.getString("Subject")+"\n\n"+rs.getString("Content")+"\n------------------------------------------------------------");
             }
 
-        } catch (ClassNotFoundException classNotFoundException) {
-            System.out.println("File not found");
-
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TechnicalOfficerDashboard.class.getName()).log(Level.SEVERE, null, ex);
         } 
     }//GEN-LAST:event_NoticeTbaleMouseClicked
 
@@ -1380,8 +1360,7 @@ private void time_table_clear(){
         String Level=(String)tlevel.getSelectedItem();
         String tSem=(String)tsem.getSelectedItem();
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+
             insert=conn1.prepareStatement("select *  from time_table where Department_ID='"+tDepID+"' and Level='"+Level+"' and Semester='"+tSem+"' and Date='Monday'");
             ResultSet rs= insert.executeQuery();
 
@@ -1428,11 +1407,9 @@ private void time_table_clear(){
                 tsfri.append("\n"+a+". "+rs4.getString("Subject_Name")+"\nTo-"+rs4.getString("Start_time")+"\nFrom-"+rs4.getString("End_time")+"\n@"+rs4.getString("Location")+"\n"+"("+rs4.getString("Type")+")"+"\n--------------");
                 a++;
             }
-        } catch (ClassNotFoundException classNotFoundException) {
-            System.out.println("File not found");
 
         } catch (SQLException ex) {
-            // Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(TechnicalOfficerDashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_timesubMouseClicked
@@ -1485,8 +1462,6 @@ private void time_table_clear(){
             String Telephone=txtPhone.getText();
 
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
             insert=conn1.prepareStatement("update  technical_officers set f_name=?,l_name=?,address_l1=?,address_l2=?,gender=?,dob=?,phone_num=? where to_id='"+userID+"'");
 
             insert.setString(1, FName);
@@ -1506,11 +1481,9 @@ private void time_table_clear(){
             technical_officer_setting();
         }      
 
-        } catch (ClassNotFoundException classNotFoundException) {
-            System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TechnicalOfficerDashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_StUpdateActionPerformed
 
@@ -1551,8 +1524,7 @@ private void clear_addAttendance_fields(){
             }    
 
             try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+
             insert=conn1.prepareStatement("insert into attendance(atte_st_id,atte_cmod_id,atte_date,atte_condition,atte_level) values (?,?,?,?,?)");
             insert.setString(1, SID);
             insert.setString(2, CID);
@@ -1571,11 +1543,8 @@ private void clear_addAttendance_fields(){
             }
             
 
-        } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("File not found");
-
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TechnicalOfficerDashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1MouseClicked
 
@@ -1612,8 +1581,7 @@ private void clear_add_medical(){
 
 
             try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+
             insert=conn1.prepareStatement("insert into medical(med_id ,med_start_day,med_end_day,med_st_id,med_cmod_id,med_condition) values (?,?,?,?,?,?)");
             insert.setString(1, Mref);
             insert.setString(2, Sdate);
@@ -1633,11 +1601,8 @@ private void clear_add_medical(){
             }
             
 
-        } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("File not found");
-
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TechnicalOfficerDashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton4MouseClicked
 
@@ -1677,8 +1642,6 @@ private void clear_add_medical(){
             String Medcon=(String)MedCond.getSelectedItem();
 
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
             insert=conn1.prepareStatement("update  medical set med_id =?,med_start_day	=?,med_end_day=?,med_st_id=?,med_cmod_id=?,med_condition=? where med_id=?");
             insert.setString(1, Mref);
             insert.setString(2, Sdate);
@@ -1700,11 +1663,9 @@ private void clear_add_medical(){
             }
             
 
-        } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TechnicalOfficerDashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton3MouseClicked
 

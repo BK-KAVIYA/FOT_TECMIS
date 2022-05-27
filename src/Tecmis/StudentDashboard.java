@@ -1490,7 +1490,6 @@ private void time_table_clear(){
  
             insert=conn1.prepareStatement("select *  from course_module where cmod_id='"+CID+"'");
             ResultSet rs= insert.executeQuery();
-  
               while(rs.next()){ 
                     String lecID=rs.getString("cmod_lec_id");
                     insert=conn1.prepareStatement("select *  from lectures where lec_id='"+lecID+"'");
@@ -1594,8 +1593,6 @@ private void time_table_clear(){
                             totProgress.setString("NOT ELIGIBLE");
                             }
                     }
-
-
 
                 } catch (SQLException ex) {
                     Logger.getLogger(StudentDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);

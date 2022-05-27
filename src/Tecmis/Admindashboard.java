@@ -25,10 +25,11 @@ import javax.swing.table.DefaultTableModel;
  * @author KA VI YA
  */
 public class Admindashboard extends javax.swing.JFrame {
+    Connection conn1=ConnectDB.MyDBConnection();
 
     CardLayout cardLayout1;
     private static String userID;
-    Connection conn1;
+
     PreparedStatement insert;
     PreparedStatement update;
 
@@ -1860,8 +1861,7 @@ public class Admindashboard extends javax.swing.JFrame {
 private void course_table_update(){
     int c;
     try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+
             insert=conn1.prepareStatement("select *  from course_module");
             ResultSet rs= insert.executeQuery();
             ResultSetMetaData Rss=rs.getMetaData();
@@ -1891,18 +1891,15 @@ private void course_table_update(){
                     df1.addRow(v2);
             }
 
-        } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Admindashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 }
 private void notice_table_update(){
     try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+
             insert=conn1.prepareStatement("select *  from notice");
             ResultSet rs= insert.executeQuery();
   
@@ -1919,18 +1916,13 @@ private void notice_table_update(){
                     df.addRow(v1);
              }
 
-        } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("File not found");
-
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Admindashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
 }
 public void admin_onload(String ID){
     int lec,stu,demo,c;
     try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
             insert=conn1.prepareStatement("select f_name from admin where admin_id='"+ID+"'");
             ResultSet admName= insert.executeQuery();
             admName.next();
@@ -1976,11 +1968,9 @@ public void admin_onload(String ID){
  
             }
 
-        } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Admindashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
      
 
@@ -2025,8 +2015,7 @@ public void admin_onload(String ID){
 public void admin_setting(){
     int c;
     try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+
             insert=conn1.prepareStatement("select *  from admin where admin_id='"+userID+"'");
             ResultSet rs= insert.executeQuery();
             ResultSetMetaData Rss=rs.getMetaData();
@@ -2065,11 +2054,9 @@ public void admin_setting(){
                  }
             }
 
-        } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Admindashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 }
@@ -2086,8 +2073,7 @@ public void admin_setting(){
             String Telephone=txtPhone.getText();
             String Type=(String)selStatus.getSelectedItem();
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+
             insert=conn1.prepareStatement("update  admin set admin_id =?,f_name=?,l_name=?,address_l1=?,address_l2=?,gender=?,dob=?,phone_num=?,admin_role=? where admin_id=?");
             insert.setString(1, RegNO);
             insert.setString(2, FName);
@@ -2119,11 +2105,8 @@ public void admin_setting(){
                     
         }
             
-        } catch (ClassNotFoundException classNotFoundException) {
-            System.out.println("File not found");
-
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Admindashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_AdUpdateActionPerformed
 
@@ -2279,8 +2262,6 @@ private void clear_cource_fields(){
         
 
             try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
             insert=conn1.prepareStatement("insert into course_module(cmod_id,cmod_name,cmod_credite,cmod_dep_id,cmod_lec_id,level,quiz_marks,assess_marks,mid_marks,theory_marks,patrical_marks) values (?,?,?,?,?,?,?,?,?,?,?)");
             insert.setString(1, CID);
             insert.setString(2, Cname);
@@ -2312,11 +2293,9 @@ private void clear_cource_fields(){
             }
             
 
-        } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Admindashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
         
 
@@ -2372,8 +2351,7 @@ private void clear_cource_fields(){
         String Level=(String)tlevel.getSelectedItem();
         String tSem=(String)tsem.getSelectedItem();
     try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+
             insert=conn1.prepareStatement("select *  from time_table where Department_ID='"+tDepID+"' and Level='"+Level+"' and Semester='"+tSem+"' and Date='Monday'");
             ResultSet rs= insert.executeQuery();
   
@@ -2420,8 +2398,6 @@ private void clear_cource_fields(){
                     tsfri.append("\n"+a+". "+rs4.getString("Subject_Name")+"\nTo-"+rs4.getString("Start_time")+"\nFrom-"+rs4.getString("End_time")+"\n@"+rs4.getString("Location")+"\n"+"("+rs4.getString("Type")+")"+"\n--------------");
             a++;
              }
-        } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("File not found");
 
         } catch (SQLException ex) {
            // Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
@@ -2567,13 +2543,12 @@ private void clear_timetable_fields(){
 
 }
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+            
             String tdep=(String)tdep1.getSelectedItem();
             String tlevel=(String)tlevel1.getSelectedItem();
             String tSem=(String)tsem1.getSelectedItem();
             String tDate=(String)tdate.getSelectedItem();
-            
-            
-
+ 
             if(this.sub1.isSelected()){
                 String subName=sub1name.getText();
                 String subFrom=sub1from.getText();
@@ -2581,8 +2556,7 @@ private void clear_timetable_fields(){
                 String subLoc=sub1loc.getText();
                 String tType=(String)sub1type.getSelectedItem();
             try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+
             insert=conn1.prepareStatement("INSERT INTO Time_Table( Department_ID, Level,Semester, Date,Subject_Name, Start_time, End_time, Location, Type)VALUES (?,?,?,?,?,?,?,?,?)");
             insert.setString(1, tdep);
             insert.setString(2, tlevel);
@@ -2607,11 +2581,8 @@ private void clear_timetable_fields(){
             }
             
 
-        } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("File not found");
-
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Admindashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
         
             }
@@ -2623,8 +2594,7 @@ private void clear_timetable_fields(){
                 String tType=(String)sub2type.getSelectedItem();
 
             try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+
                 insert=conn1.prepareStatement("INSERT INTO Time_Table( Department_ID, Level,Semester, Date,Subject_Name, Start_time, End_time, Location, Type)VALUES (?,?,?,?,?,?,?,?,?)");
                 insert.setString(1, tdep);
                 insert.setString(2, tlevel);
@@ -2649,11 +2619,8 @@ private void clear_timetable_fields(){
                 }
             
 
-                } catch (ClassNotFoundException classNotFoundException) {
-                        System.out.println("File not found");
-
                 } catch (SQLException ex) {
-                    Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Admindashboard.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
@@ -2664,8 +2631,7 @@ private void clear_timetable_fields(){
                 String subLoc=sub3loc.getText();
                 String tType=(String)sub3type.getSelectedItem();
             try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+
                 insert=conn1.prepareStatement("INSERT INTO Time_Table( Department_ID, Level,Semester, Date,Subject_Name, Start_time, End_time, Location, Type)VALUES (?,?,?,?,?,?,?,?,?)");
                 insert.setString(1, tdep);
                 insert.setString(2, tlevel);
@@ -2690,11 +2656,8 @@ private void clear_timetable_fields(){
                 }
             
 
-                } catch (ClassNotFoundException classNotFoundException) {
-                        System.out.println("File not found");
-
                 } catch (SQLException ex) {
-                    Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Admindashboard.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
@@ -2706,8 +2669,7 @@ private void clear_timetable_fields(){
                 String tType=(String)sub4type.getSelectedItem();
 
             try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+
                 insert=conn1.prepareStatement("INSERT INTO Time_Table( Department_ID, Level,Semester, Date,Subject_Name, Start_time, End_time, Location, Type)VALUES (?,?,?,?,?,?,?,?,?)");
                 insert.setString(1, tdep);
                 insert.setString(2, tlevel);
@@ -2732,11 +2694,8 @@ private void clear_timetable_fields(){
                 }
             
 
-                } catch (ClassNotFoundException classNotFoundException) {
-                        System.out.println("File not found");
-
                 } catch (SQLException ex) {
-                    Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Admindashboard.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
@@ -2768,8 +2727,7 @@ private void time_table_clear(){
         int selectedIndex=NoticeTbale.getSelectedRow();
         String NoticeID=(df.getValueAt(selectedIndex, 0).toString());
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+
             insert=conn1.prepareStatement("select *  from notice where Notice_ID='"+NoticeID+"'");
             ResultSet rs= insert.executeQuery();
    
@@ -2778,12 +2736,9 @@ private void time_table_clear(){
                    timeTablesView.append("\nDate :- "+rs.getString("DATE")+"\n"+rs.getString("Subject")+"\n\n"+rs.getString("Content")+"\n------------------------------------------------------------");;
                  }
 
-       
-        } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Admindashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_NoticeTbaleMouseClicked
@@ -2801,15 +2756,14 @@ private void clear_add_notice(){
 
 } 
     private void addNoticeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addNoticeMouseClicked
-                String noticeNumber=noticeNum.getText();
-                String noticeTl=noticeTitle.getText();
-                String noticeD=noticeDate.getText();
-                String noticeCon=noticeContent.getText();
+        String noticeNumber=noticeNum.getText();
+        String noticeTl=noticeTitle.getText();
+        String noticeD=noticeDate.getText();
+        String noticeCon=noticeContent.getText();
 
 
             try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+
                 insert=conn1.prepareStatement("INSERT INTO notice( Notice_ID, Subject,Content, DATE)VALUES (?,?,?,?)");
                 insert.setString(1, noticeNumber);
                 insert.setString(2, noticeTl);
@@ -2830,11 +2784,8 @@ private void clear_add_notice(){
                 }
             
 
-                } catch (ClassNotFoundException classNotFoundException) {
-                        System.out.println("File not found");
-
                 } catch (SQLException ex) {
-                    Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Admindashboard.class.getName()).log(Level.SEVERE, null, ex);
                 }
     }//GEN-LAST:event_addNoticeMouseClicked
 

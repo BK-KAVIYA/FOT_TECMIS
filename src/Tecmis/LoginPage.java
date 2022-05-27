@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  * @author KA VI YA
  */
 public class LoginPage extends javax.swing.JFrame {
-
+    Connection conn1=ConnectDB.MyDBConnection();
     /**
      * Creates new form LoginPage
      */
@@ -195,10 +195,8 @@ public class LoginPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         int c;
 
-        Connection conn1;
     try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+
             String username=uname.getText();
             String password=pwd.getText();
 
@@ -244,11 +242,9 @@ public class LoginPage extends javax.swing.JFrame {
 
             conn1.close();
 
-        } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("File not found");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Lmarks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginPage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnlogActionPerformed
 
