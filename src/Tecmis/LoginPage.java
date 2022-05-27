@@ -244,7 +244,7 @@ public class LoginPage extends javax.swing.JFrame {
                 pwd.setText("");
             }
 
-            conn1.close();
+            //conn1.close();
 
 
         } catch (SQLException ex) {
