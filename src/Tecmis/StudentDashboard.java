@@ -190,6 +190,7 @@ public class StudentDashboard extends javax.swing.JFrame {
         jLabel37 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(204, 0, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1460,10 +1461,12 @@ private void time_table_clear(){
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
 
-        int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Exit?", "Warnning",JOptionPane.YES_NO_OPTION);
+        int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Logout?", "Warnning",JOptionPane.YES_NO_OPTION);
 
         if(dialogResult==JOptionPane.YES_NO_OPTION){
-            System.exit(0);
+            LoginPage loginPage = new LoginPage();
+            this.dispose();
+            loginPage.show();
         }
     }//GEN-LAST:event_jLabel7MouseClicked
 
@@ -1512,11 +1515,15 @@ private void time_table_clear(){
     }//GEN-LAST:event_jButton5MouseClicked
 
     private void jLabel33MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel33MouseClicked
-        // TODO add your handling code here:
+       this.setState(ICONIFIED);
     }//GEN-LAST:event_jLabel33MouseClicked
 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
-        // TODO add your handling code here:
+         int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Exit?", "Warnning",JOptionPane.YES_NO_OPTION);
+
+        if(dialogResult==JOptionPane.YES_NO_OPTION){
+            System.exit(0);
+        }
     }//GEN-LAST:event_jLabel18MouseClicked
 
     private void AcoursesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AcoursesActionPerformed
@@ -1668,7 +1675,11 @@ private void time_table_clear(){
     }//GEN-LAST:event_jLabel34MouseClicked
 
     private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
-        // TODO add your handling code here:
+         int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Exit?", "Warnning",JOptionPane.YES_NO_OPTION);
+
+        if(dialogResult==JOptionPane.YES_NO_OPTION){
+            System.exit(0);
+        }
     }//GEN-LAST:event_jLabel22MouseClicked
 
     private void stClearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stClearMouseClicked
