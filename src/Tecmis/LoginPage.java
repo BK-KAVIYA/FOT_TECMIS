@@ -213,7 +213,11 @@ public class LoginPage extends javax.swing.JFrame {
                 apage.admin_onload(username);
                 apage.show();
             }else if(role==2){
-                
+                this.dispose(); //close the loging page
+                Lecturerdashboard lbd = new Lecturerdashboard();
+                lbd.setUser(username);
+                lbd.lecturer_setting();
+                lbd.show();
             }else if(role==3){
                 this.dispose(); //close the loging page
                 TechnicalOfficerDashboard tpage=new TechnicalOfficerDashboard();

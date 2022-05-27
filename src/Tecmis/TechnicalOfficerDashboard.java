@@ -456,6 +456,11 @@ public class TechnicalOfficerDashboard extends javax.swing.JFrame {
                 jButton5MouseClicked(evt);
             }
         });
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jPanel10.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 90, 30));
 
         timesub.setBackground(new java.awt.Color(255, 51, 51));
@@ -1672,6 +1677,10 @@ private void clear_add_medical(){
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
         clear_add_medical();
     }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
