@@ -224,6 +224,7 @@ public class LoginPage extends javax.swing.JFrame {
                 this.dispose(); //close the loging page
                 TechnicalOfficerDashboard tpage=new TechnicalOfficerDashboard();
                 tpage.setUser(username);
+                tpage.to_on_load();
                 tpage.show();
             }else if(role==4){
                 this.dispose(); //close the loging page

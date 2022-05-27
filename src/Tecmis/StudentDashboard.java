@@ -1201,7 +1201,13 @@ public class StudentDashboard extends javax.swing.JFrame {
 
 public void student_on_load(){
     try {
-
+            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+            insert=conn1.prepareStatement("select f_name from students where index_num='"+userID+"'");
+            ResultSet admName= insert.executeQuery();
+            admName.next();
+            String adminName=admName.getString("f_name");
+            adName.setText(adminName);
+            
             insert=conn1.prepareStatement("select * from student_course_module where stmod_st_id='"+userID+"'");
             ResultSet cID= insert.executeQuery();
 

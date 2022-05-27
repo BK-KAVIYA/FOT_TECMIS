@@ -1150,7 +1150,21 @@ public class TechnicalOfficerDashboard extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-public void technical_officer_setting(){
+public void to_on_load(){
+    try {
+            conn1=DriverManager.getConnection("jdbc:mysql://localhost:3306/fot_tecmis","root","");
+            insert=conn1.prepareStatement("select f_name from technical_officers where to_id='"+userID+"'");
+            ResultSet admName= insert.executeQuery();
+            admName.next();
+            String adminName=admName.getString("f_name");
+            adName.setText(adminName);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(TechnicalOfficerDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+}
+    
+    public void technical_officer_setting(){
     int c;
     try {
             Class.forName("com.mysql.cj.jdbc.Driver");
