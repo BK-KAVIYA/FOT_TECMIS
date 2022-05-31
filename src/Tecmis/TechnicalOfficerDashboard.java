@@ -1315,10 +1315,12 @@ private void notice_table_update(){
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
 
-        int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Exit?", "Warnning",JOptionPane.YES_NO_OPTION);
+        int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Log out?", "Warnning",JOptionPane.YES_NO_OPTION);
 
         if(dialogResult==JOptionPane.YES_NO_OPTION){
-            System.exit(0);
+            this.dispose();
+            LoginPage apage=new LoginPage();
+            apage.show();
         }
     }//GEN-LAST:event_jLabel7MouseClicked
 
