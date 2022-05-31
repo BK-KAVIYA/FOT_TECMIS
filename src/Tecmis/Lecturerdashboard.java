@@ -1805,12 +1805,21 @@ public class Lecturerdashboard extends javax.swing.JFrame {
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
 
+<<<<<<< HEAD
+        int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Log out?", "Warnning",JOptionPane.YES_NO_OPTION);
+
+        if(dialogResult==JOptionPane.YES_NO_OPTION){
+            this.dispose();
+            LoginPage apage=new LoginPage();
+            apage.show();
+=======
          int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Logout?", "Warnning",JOptionPane.YES_NO_OPTION);
 
         if(dialogResult==JOptionPane.YES_NO_OPTION){
             LoginPage loginPage = new LoginPage();
             this.dispose();
             loginPage.show();
+>>>>>>> d1a5ca2aa6eae68ba5c15a3c68c50bd8259342c3
         }
     }//GEN-LAST:event_jLabel7MouseClicked
 
