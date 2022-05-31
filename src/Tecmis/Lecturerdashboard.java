@@ -67,7 +67,6 @@ public class Lecturerdashboard extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         menuprofile = new rojerusan.RSMaterialButtonRectangle();
         menuuser = new rojerusan.RSMaterialButtonRectangle();
-        menucourse = new rojerusan.RSMaterialButtonRectangle();
         menunotice = new rojerusan.RSMaterialButtonRectangle();
         menutimetable = new rojerusan.RSMaterialButtonRectangle();
         menumarks = new rojerusan.RSMaterialButtonRectangle();
@@ -171,10 +170,6 @@ public class Lecturerdashboard extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
-        pnlmc = new javax.swing.JPanel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel41 = new javax.swing.JLabel();
-        jLabel42 = new javax.swing.JLabel();
         pnlep = new javax.swing.JPanel();
         jLabel32 = new javax.swing.JLabel();
         txtFName = new javax.swing.JTextField();
@@ -220,7 +215,7 @@ public class Lecturerdashboard extends javax.swing.JFrame {
         jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1018, 630));
+        setMinimumSize(new java.awt.Dimension(1000, 600));
         setUndecorated(true);
         setSize(new java.awt.Dimension(1000, 600));
 
@@ -269,7 +264,7 @@ public class Lecturerdashboard extends javax.swing.JFrame {
                 menuprofileActionPerformed(evt);
             }
         });
-        jPanel1.add(menuprofile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, 54));
+        jPanel1.add(menuprofile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, 54));
 
         menuuser.setBackground(new java.awt.Color(153, 0, 0));
         menuuser.setText("Student Details");
@@ -278,16 +273,7 @@ public class Lecturerdashboard extends javax.swing.JFrame {
                 menuuserActionPerformed(evt);
             }
         });
-        jPanel1.add(menuuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, 54));
-
-        menucourse.setBackground(new java.awt.Color(153, 0, 0));
-        menucourse.setText("Manage Courses");
-        menucourse.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menucourseActionPerformed(evt);
-            }
-        });
-        jPanel1.add(menucourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, 54));
+        jPanel1.add(menuuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, 54));
 
         menunotice.setBackground(new java.awt.Color(153, 0, 0));
         menunotice.setText("Notices");
@@ -296,7 +282,7 @@ public class Lecturerdashboard extends javax.swing.JFrame {
                 menunoticeActionPerformed(evt);
             }
         });
-        jPanel1.add(menunotice, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, 54));
+        jPanel1.add(menunotice, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, 54));
 
         menutimetable.setBackground(new java.awt.Color(153, 0, 0));
         menutimetable.setText("Time Table");
@@ -310,7 +296,7 @@ public class Lecturerdashboard extends javax.swing.JFrame {
                 menutimetableActionPerformed(evt);
             }
         });
-        jPanel1.add(menutimetable, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, -1, 54));
+        jPanel1.add(menutimetable, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, 54));
 
         menumarks.setBackground(new java.awt.Color(153, 0, 0));
         menumarks.setText("MARKS");
@@ -319,7 +305,7 @@ public class Lecturerdashboard extends javax.swing.JFrame {
                 menumarksActionPerformed(evt);
             }
         });
-        jPanel1.add(menumarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, -1, 54));
+        jPanel1.add(menumarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, 54));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/exit.png"))); // NOI18N
         jLabel7.setText("jLabel7");
@@ -1257,54 +1243,6 @@ public class Lecturerdashboard extends javax.swing.JFrame {
 
         cardpnl.add(pnln, "pnln");
 
-        pnlmc.setBackground(new java.awt.Color(255, 255, 255));
-        pnlmc.setPreferredSize(new java.awt.Dimension(660, 600));
-
-        jLabel21.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
-        jLabel21.setText("Lecturer Dashboard -> Manage Course");
-
-        jLabel41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/minimize.png"))); // NOI18N
-        jLabel41.setText("jLabel29");
-        jLabel41.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel41MouseClicked(evt);
-            }
-        });
-
-        jLabel42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/close.png"))); // NOI18N
-        jLabel42.setText("jLabel17");
-        jLabel42.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel42MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnlmcLayout = new javax.swing.GroupLayout(pnlmc);
-        pnlmc.setLayout(pnlmcLayout);
-        pnlmcLayout.setHorizontalGroup(
-            pnlmcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlmcLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        pnlmcLayout.setVerticalGroup(
-            pnlmcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlmcLayout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addGroup(pnlmcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel41)
-                    .addComponent(jLabel42)
-                    .addComponent(jLabel21))
-                .addContainerGap(558, Short.MAX_VALUE))
-        );
-
-        cardpnl.add(pnlmc, "pnlmc");
-
         pnlep.setBackground(new java.awt.Color(255, 255, 255));
         pnlep.setPreferredSize(new java.awt.Dimension(660, 600));
 
@@ -1442,7 +1380,7 @@ public class Lecturerdashboard extends javax.swing.JFrame {
                 .addGroup(pnlepLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlepLayout.createSequentialGroup()
                         .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1867,12 +1805,21 @@ public class Lecturerdashboard extends javax.swing.JFrame {
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
 
+<<<<<<< HEAD
         int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Log out?", "Warnning",JOptionPane.YES_NO_OPTION);
 
         if(dialogResult==JOptionPane.YES_NO_OPTION){
             this.dispose();
             LoginPage apage=new LoginPage();
             apage.show();
+=======
+         int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Logout?", "Warnning",JOptionPane.YES_NO_OPTION);
+
+        if(dialogResult==JOptionPane.YES_NO_OPTION){
+            LoginPage loginPage = new LoginPage();
+            this.dispose();
+            loginPage.show();
+>>>>>>> d1a5ca2aa6eae68ba5c15a3c68c50bd8259342c3
         }
     }//GEN-LAST:event_jLabel7MouseClicked
 
@@ -1908,10 +1855,6 @@ public class Lecturerdashboard extends javax.swing.JFrame {
         cardLayoutn.show(cardpnl,"pnln");
         notice_table_update();
     }//GEN-LAST:event_menunoticeActionPerformed
-
-    private void menucourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menucourseActionPerformed
-        cardLayoutn.show(cardpnl,"pnlmc");
-    }//GEN-LAST:event_menucourseActionPerformed
 
     private void menuuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuuserActionPerformed
         cardLayoutn.show(cardpnl,"pnlsd");
@@ -2124,18 +2067,6 @@ public class Lecturerdashboard extends javax.swing.JFrame {
             System.exit(0);
         }
     }//GEN-LAST:event_jLabel40MouseClicked
-
-    private void jLabel41MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel41MouseClicked
-        this.setState(ICONIFIED);
-    }//GEN-LAST:event_jLabel41MouseClicked
-
-    private void jLabel42MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel42MouseClicked
-        int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Exit?", "Warnning",JOptionPane.YES_NO_OPTION);
-
-        if(dialogResult==JOptionPane.YES_NO_OPTION){
-            System.exit(0);
-        }
-    }//GEN-LAST:event_jLabel42MouseClicked
 
     private void jLabel43MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel43MouseClicked
         this.setState(ICONIFIED);
@@ -2501,7 +2432,6 @@ public class Lecturerdashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -2523,8 +2453,6 @@ public class Lecturerdashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
-    private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
@@ -2579,7 +2507,6 @@ public class Lecturerdashboard extends javax.swing.JFrame {
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
-    private rojerusan.RSMaterialButtonRectangle menucourse;
     private rojerusan.RSMaterialButtonRectangle menumarks;
     private rojerusan.RSMaterialButtonRectangle menunotice;
     private rojerusan.RSMaterialButtonRectangle menuprofile;
@@ -2588,7 +2515,6 @@ public class Lecturerdashboard extends javax.swing.JFrame {
     private javax.swing.JPanel pnlatt;
     private javax.swing.JPanel pnlep;
     private javax.swing.JPanel pnlm;
-    private javax.swing.JPanel pnlmc;
     private javax.swing.JPanel pnln;
     private javax.swing.JPanel pnlpf;
     private javax.swing.JPanel pnlsd;

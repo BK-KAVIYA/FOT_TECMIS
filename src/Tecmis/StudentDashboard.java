@@ -190,6 +190,7 @@ public class StudentDashboard extends javax.swing.JFrame {
         jLabel37 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(204, 0, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1460,12 +1461,21 @@ private void time_table_clear(){
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
 
+<<<<<<< HEAD
         int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Log out?", "Warnning",JOptionPane.YES_NO_OPTION);
 
         if(dialogResult==JOptionPane.YES_NO_OPTION){
             this.dispose();
             LoginPage apage=new LoginPage();
             apage.show();
+=======
+        int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Logout?", "Warnning",JOptionPane.YES_NO_OPTION);
+
+        if(dialogResult==JOptionPane.YES_NO_OPTION){
+            LoginPage loginPage = new LoginPage();
+            this.dispose();
+            loginPage.show();
+>>>>>>> d1a5ca2aa6eae68ba5c15a3c68c50bd8259342c3
         }
     }//GEN-LAST:event_jLabel7MouseClicked
 
@@ -1514,11 +1524,19 @@ private void time_table_clear(){
     }//GEN-LAST:event_jButton5MouseClicked
 
     private void jLabel33MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel33MouseClicked
+<<<<<<< HEAD
         this.setState(ICONIFIED);
     }//GEN-LAST:event_jLabel33MouseClicked
 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
         int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Exit?", "Warnning",JOptionPane.YES_NO_OPTION);
+=======
+       this.setState(ICONIFIED);
+    }//GEN-LAST:event_jLabel33MouseClicked
+
+    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+         int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Exit?", "Warnning",JOptionPane.YES_NO_OPTION);
+>>>>>>> d1a5ca2aa6eae68ba5c15a3c68c50bd8259342c3
 
         if(dialogResult==JOptionPane.YES_NO_OPTION){
             System.exit(0);
@@ -1674,7 +1692,11 @@ private void time_table_clear(){
     }//GEN-LAST:event_jLabel34MouseClicked
 
     private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
+<<<<<<< HEAD
         int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Exit?", "Warnning",JOptionPane.YES_NO_OPTION);
+=======
+         int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Exit?", "Warnning",JOptionPane.YES_NO_OPTION);
+>>>>>>> d1a5ca2aa6eae68ba5c15a3c68c50bd8259342c3
 
         if(dialogResult==JOptionPane.YES_NO_OPTION){
             System.exit(0);
