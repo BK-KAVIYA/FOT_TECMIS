@@ -212,7 +212,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="20" y="350" width="-1" height="54"/>
+                  <AbsoluteConstraints x="20" y="340" width="-1" height="54"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -228,7 +228,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="20" y="410" width="-1" height="54"/>
+                  <AbsoluteConstraints x="20" y="390" width="-1" height="54"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -1346,7 +1346,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic" size="18" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Lecturer Dashboard -&gt; Time tables"/>
+                    <Property name="text" type="java.lang.String" value="Lecturer Dashboard -&gt; Marks"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel35">

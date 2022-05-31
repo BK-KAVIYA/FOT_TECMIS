@@ -296,7 +296,7 @@ public class Lecturerdashboard extends javax.swing.JFrame {
                 menutimetableActionPerformed(evt);
             }
         });
-        jPanel1.add(menutimetable, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, 54));
+        jPanel1.add(menutimetable, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, 54));
 
         menumarks.setBackground(new java.awt.Color(153, 0, 0));
         menumarks.setText("MARKS");
@@ -305,7 +305,7 @@ public class Lecturerdashboard extends javax.swing.JFrame {
                 menumarksActionPerformed(evt);
             }
         });
-        jPanel1.add(menumarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, 54));
+        jPanel1.add(menumarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, -1, 54));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/exit.png"))); // NOI18N
         jLabel7.setText("jLabel7");
@@ -798,7 +798,7 @@ public class Lecturerdashboard extends javax.swing.JFrame {
         exmType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Q", "MID", "FT", "FP", "A", " " }));
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
-        jLabel9.setText("Lecturer Dashboard -> Time tables");
+        jLabel9.setText("Lecturer Dashboard -> Marks");
 
         jLabel35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/close.png"))); // NOI18N
         jLabel35.setText("jLabel17");

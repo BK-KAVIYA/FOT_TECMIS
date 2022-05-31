@@ -6,6 +6,11 @@ package Tecmis;
 
 
 import java.awt.CardLayout;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -17,6 +22,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -33,6 +40,10 @@ public class Admindashboard extends javax.swing.JFrame {
     PreparedStatement insert;
     PreparedStatement update;
 
+   private ImageIcon format=null;
+   String fname=null;
+   int s=0;
+   byte[] pimage=null;
     public Admindashboard() {
         initComponents();
         cardLayout1 =(CardLayout)(CardjPannel.getLayout());
@@ -107,8 +118,10 @@ public class Admindashboard extends javax.swing.JFrame {
         txtPhone = new javax.swing.JTextField();
         txtDOB = new javax.swing.JTextField();
         AdUpdate = new rojerusan.RSMaterialButtonRectangle();
-        jLabel31 = new javax.swing.JLabel();
+        lblimage = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
+        jButton9 = new javax.swing.JButton();
+        txtid = new javax.swing.JLabel();
         CardPri3 = new javax.swing.JPanel();
         jLabel34 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -543,7 +556,7 @@ public class Admindashboard extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         CardjPannel.add(CardPri1, "CardPri1");
@@ -586,7 +599,6 @@ public class Admindashboard extends javax.swing.JFrame {
         CardPri2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 73, -1, 32));
 
         selStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "admin1", "admin2", "admin3" }));
-        
         CardPri2.add(selStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 196, 186, 28));
 
         jLabel21.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -663,9 +675,9 @@ public class Admindashboard extends javax.swing.JFrame {
         });
         CardPri2.add(AdUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 500, 107, 40));
 
-        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/man-with-beard-avatar-character-isolated-icon-free-vector-removebg-preview-removebg-preview.png"))); // NOI18N
-        jLabel31.setText("jLabel31");
-        CardPri2.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 80, 120, -1));
+        lblimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/man-with-beard-avatar-character-isolated-icon-free-vector-removebg-preview-removebg-preview.png"))); // NOI18N
+        lblimage.setText("jLabel31");
+        CardPri2.add(lblimage, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 120, 110));
 
         jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/minimize.png"))); // NOI18N
         jLabel30.setText("jLabel29");
@@ -675,6 +687,17 @@ public class Admindashboard extends javax.swing.JFrame {
             }
         });
         CardPri2.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 20, -1));
+
+        jButton9.setText("add image");
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+        });
+        CardPri2.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
+
+        txtid.setText("Image name");
+        CardPri2.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 120, 20));
 
         CardjPannel.add(CardPri2, "CardPri2");
 
@@ -729,7 +752,6 @@ public class Admindashboard extends javax.swing.JFrame {
         jPanel7.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 60, 86, 22));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ICT", "ET", "BST", "MUL" }));
-        
         jPanel7.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 56, 206, 30));
 
         jButton3.setBackground(new java.awt.Color(255, 0, 51));
@@ -2038,6 +2060,13 @@ public void admin_setting(){
 
                     String status = (String)rs.getString("admin_role");
                     selStatus.setSelectedItem(status);
+
+                    byte[] imagedata=rs.getBytes("picture_path");
+                    format=new ImageIcon(imagedata);
+                    Image mm=format.getImage();
+                    Image img2=mm.getScaledInstance(lblimage.getWidth(),lblimage.getHeight(), Image.SCALE_SMOOTH);
+                    ImageIcon image=new ImageIcon(img2);
+                    lblimage.setIcon(image);
  
                 }
             }
@@ -2072,9 +2101,10 @@ public void admin_setting(){
             String DOB=txtDOB.getText();
             String Telephone=txtPhone.getText();
             String Type=(String)selStatus.getSelectedItem();
+            String id=txtid.getText(); 
 
 
-            insert=conn1.prepareStatement("update  admin set admin_id =?,f_name=?,l_name=?,address_l1=?,address_l2=?,gender=?,dob=?,phone_num=?,admin_role=? where admin_id=?");
+            insert=conn1.prepareStatement("update  admin set admin_id =?,f_name=?,l_name=?,address_l1=?,address_l2=?,gender=?,dob=?,phone_num=?,admin_role=?,picture_path=? where admin_id=?");
             insert.setString(1, RegNO);
             insert.setString(2, FName);
             insert.setString(3, LName);
@@ -2084,7 +2114,9 @@ public void admin_setting(){
             insert.setString(7, DOB);
             insert.setString(8,Telephone );
             insert.setString(9,Type );
-            insert.setString(10, RegNO);
+            insert.setBytes(10, pimage);
+            insert.setString(11, RegNO);
+
 
             String AdPwd=adPwd.getText();
             String AdCpwd=adCPwd.getText();
@@ -2828,7 +2860,44 @@ private void clear_add_notice(){
                 System.exit(0);
         }
     }//GEN-LAST:event_jLabel83MouseClicked
-/**/
+
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+        JFileChooser fchoser=new JFileChooser();
+        fchoser.showOpenDialog(null);
+        File f=fchoser.getSelectedFile();
+        fname=f.getAbsolutePath();
+        ImageIcon micon=new ImageIcon(fname);        
+        try {
+            File image=new File(fname);
+            FileInputStream fis=new FileInputStream(image);
+            ByteArrayOutputStream baos=new ByteArrayOutputStream();
+            byte[] buf=new byte[1024];
+            for(int readnum; (readnum=fis.read(buf)) !=-1;)
+            {            
+                baos.write(buf,0,readnum);                
+            }
+            pimage=baos.toByteArray();
+            lblimage.setIcon(resizeImage(fname, buf));
+        } catch (Exception e) {
+        }       
+    }//GEN-LAST:event_jButton9MouseClicked
+// This code use to resize image to fit lable
+public ImageIcon resizeImage(String imagePath, byte[] pic){
+          
+        ImageIcon myImage=null;
+        if(imagePath !=null)
+        {
+        myImage=new ImageIcon(imagePath);
+        
+        }else{
+         myImage=new ImageIcon(pic);
+        }
+                
+        Image img=myImage.getImage();
+        Image img2=img.getScaledInstance(lblimage.getHeight(),lblimage.getWidth(),Image.SCALE_SMOOTH);
+        ImageIcon image=new ImageIcon(img2);
+        return image;
+    } 
     /**
      * @param args the command line arguments
      */
@@ -2898,6 +2967,7 @@ private void clear_add_notice(){
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -2923,7 +2993,6 @@ private void clear_add_notice(){
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
@@ -3011,6 +3080,7 @@ private void clear_add_notice(){
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblimage;
     private javax.swing.JLabel lecCount;
     private javax.swing.JComboBox<String> lecNames;
     private javax.swing.JPanel marksPanel;
@@ -3081,5 +3151,6 @@ private void clear_add_notice(){
     private javax.swing.JTextField txtLName;
     private javax.swing.JTextField txtPhone;
     private javax.swing.JTextField txtRegNo;
+    private javax.swing.JLabel txtid;
     // End of variables declaration//GEN-END:variables
 }

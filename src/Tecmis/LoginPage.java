@@ -19,9 +19,24 @@ import javax.swing.JOptionPane;
  */
 public class LoginPage extends javax.swing.JFrame {
     Connection conn1=ConnectDB.MyDBConnection();
-    /**
-     * Creates new form LoginPage
-     */
+ public static String username;
+ public static String password;
+
+    public static String getUsername() {
+        return username;
+    }
+
+    public static void setUsername(String username) {
+        LoginPage.username = username;
+    }
+
+    public static String getPassword() {
+        return password;
+    }
+
+    public static void setPassword(String password) {
+        LoginPage.password = password;
+    }
     public LoginPage() {
         initComponents();
     }
@@ -197,15 +212,15 @@ public class LoginPage extends javax.swing.JFrame {
 
     try {
 
-            String username=uname.getText();
-            String password=pwd.getText();
+            setUsername(uname.getText());
+            setPassword(pwd.getText());
 
             Statement stm=conn1.createStatement();
-            String sql="select * from log_user where Uname='"+username+"' and Password='"+password+"'";
+            String sql="select * from log_user where Uname='"+getUsername()+"' and Password='"+getPassword()+"'";
             ResultSet rs= stm.executeQuery(sql);
             if(rs.next()){
                int role=rs.getInt("Role");
-                //if username and passwordcorrect go to home
+                //if username and password correct go to home
             if(role==1){
                 this.dispose(); //close the loging page
                 Admindashboard apage=new Admindashboard();
